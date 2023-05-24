@@ -28,12 +28,19 @@ public class PlayerController : MonoBehaviour
     {
         if (Mathf.Abs(direction.x) > 0 && Mathf.Abs(direction.y) > 0)        //Limits diagonal movement speed
         {
-            rb.velocity = direction * speed / Mathf.Sqrt(2);
+            rb.velocity = ConvertToIso(direction * speed / Mathf.Sqrt(2));
         }
         else
         {
-            rb.velocity = direction * speed;
+            rb.velocity = ConvertToIso(direction * speed);
         }
 
+    }
+    private Vector2 ConvertToIso(Vector2 cartesian)
+    {
+        Vector2 screen_pos = new Vector2();
+        screen_pos.x = cartesian.x - cartesian.y;
+        screen_pos.y = (cartesian.x + cartesian.y) / 2;
+        return screen_pos;
     }
 }
