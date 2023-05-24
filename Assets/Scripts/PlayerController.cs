@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed;
+    public float cropRange;
     private Vector2 direction;
     private Rigidbody2D rb;
 
@@ -42,5 +43,10 @@ public class PlayerController : MonoBehaviour
         //screen_pos.x = cartesian.x - cartesian.y;
         //screen_pos.y = (cartesian.x + cartesian.y) / 2;
         return screen_pos;
+    }
+
+    public float GetCropRange()
+    {
+        return cropRange;
     }
 }
