@@ -38,9 +38,9 @@ public class PlayerController : MonoBehaviour
     }
     private Vector2 ConvertToIso(Vector2 cartesian)
     {
-        Vector2 screen_pos = new Vector2();
-        screen_pos.x = cartesian.x - cartesian.y;
-        screen_pos.y = (cartesian.x + cartesian.y) / 2;
+        Vector2 screen_pos = new Vector2(cartesian.x, cartesian.y / 2);
+        //screen_pos.x = cartesian.x - cartesian.y;
+        //screen_pos.y = (cartesian.x + cartesian.y) / 2;
         return screen_pos;
     }
 }
