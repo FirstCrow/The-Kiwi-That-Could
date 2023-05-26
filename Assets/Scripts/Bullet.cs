@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private float damage = 1f;
     public float speed;
     public float lifetime;
     private Rigidbody2D rb;
@@ -24,6 +25,15 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject); 
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.TryGetComponent<DamageableEntity>(out DamageableEntity destructableComponent))
+        {
+            destructableComponent.TakeDamage(damage);
+        }
+        Destroy(gameObject);
     }
 
     private void FixedUpdate()

@@ -5,17 +5,19 @@ using UnityEngine;
 //Can be inherited by the player, enemies, or any object that will take damage and then be destroyed
 public class DamageableEntity : MonoBehaviour
 {
-    public float HP;
+    [SerializeField] float health, maxHealth = 3f;
 
-    public virtual void TakeDamage(float damage) {
-        HP -= damage;
-
-        if (HP <= 0) {
-            Die();
-        }
+    private void Start()
+    {
+        health = maxHealth;
     }
 
-    public virtual void Die() {
-        Destroy(gameObject);
+    public void TakeDamage(float damageAmount)
+    {
+        health -= damageAmount;
+        if(health <=0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
