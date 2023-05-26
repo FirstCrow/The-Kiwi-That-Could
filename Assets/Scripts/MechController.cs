@@ -11,6 +11,7 @@ public class MechController : MonoBehaviour
     private Vector2 direction;
     private Rigidbody2D rb;
     public GameObject rotationPoint;
+    public GameObject bulletSpawnPoint;
 
 
 
@@ -82,7 +83,7 @@ public class MechController : MonoBehaviour
 
     private void shoot()
     {
-        Instantiate(bullet, transform.position, rotationPoint.transform.rotation);
+        Instantiate(bullet, bulletSpawnPoint.transform.position, rotationPoint.transform.rotation);
     }
 
     private Vector2 ConvertToIso(Vector2 cartesian)
