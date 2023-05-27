@@ -17216,8 +17216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425ebf4371c1a534780066e7ba2ba0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeTarget: 240
-  dayStartTime: 7
+  TimeTarget: 2
+  dayStartTime: 11
   TimerOn: 1
   TimerTxt: {fileID: 2094145599}
 --- !u!1001 &4454723265677319033

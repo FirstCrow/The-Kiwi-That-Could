@@ -16,6 +16,7 @@ public class DayNightScript : MonoBehaviour
     void Start()
     {
         TimerOn = true;
+        TimeTarget *= 60;
         TimeElapsed = 0;
     }
 
@@ -45,7 +46,7 @@ public class DayNightScript : MonoBehaviour
 
         minutes += dayStartTime;
 
-        if (minutes > 12)
+        if (minutes > 11)
             isPm = true;
 
         if(!isPm)
