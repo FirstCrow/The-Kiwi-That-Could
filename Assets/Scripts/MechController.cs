@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+// This script controlls the player in the resource run scenes
+
 public class MechController : MonoBehaviour
 {
-    // Instance Varibles
+    [Header("Mech Varibles")]
     public float speed;
-    public GameObject bullet;
     private Vector2 direction;
-    private Rigidbody2D rb;
+
+    [Header("Links")]
     public GameObject rotationPoint;
     public GameObject bulletSpawnPoint;
+    public GameObject bullet;
+    private Rigidbody2D rb;
 
 
 
@@ -26,6 +30,7 @@ public class MechController : MonoBehaviour
         direction.x = Input.GetAxisRaw("Horizontal");   //Get Horizontal Inputs (A or D | Left or Right)
         direction.y = Input.GetAxisRaw("Vertical");     //Get Vertical Inputs (W or S | Up or Down)
 
+        // if the LMB is clicked, shoot a bullet
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             shoot();
@@ -34,6 +39,7 @@ public class MechController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Moves the player
         if (Mathf.Abs(direction.x) > 0 && Mathf.Abs(direction.y) > 0)        //Limits diagonal movement speed
         {
             rb.velocity = ConvertToIso(direction * speed / Mathf.Sqrt(2));
@@ -81,16 +87,17 @@ public class MechController : MonoBehaviour
 
     }
 
+    // Shoots a bullet
     private void shoot()
     {
-        Instantiate(bullet, bulletSpawnPoint.transform.position, rotationPoint.transform.rotation);
+        if(!PauseMenu.getGameIsPaused())
+            Instantiate(bullet, bulletSpawnPoint.transform.position, rotationPoint.transform.rotation);
     }
 
+    // Used to convert cartesian coordinates to iso coordinates
     private Vector2 ConvertToIso(Vector2 cartesian)
     {
         Vector2 screen_pos = new Vector2(cartesian.x, cartesian.y / 2);
-        //screen_pos.x = cartesian.x - cartesian.y;
-        //screen_pos.y = (cartesian.x + cartesian.y) / 2;
         return screen_pos;
     }
 }

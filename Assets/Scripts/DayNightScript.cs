@@ -3,14 +3,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This script controlls the Day/Night cycle
 public class DayNightScript : MonoBehaviour
 {
-    private float TimeElapsed;      // 1 hour is 1 minute in real life
-    public float TimeTarget;        // How long you want the day night cycle to be
-    public float dayStartTime;      // Hour that the day starts on
+    [Header("Time Varibles")]
+    [Tooltip("How long you want the village loop to last (Hours)")]
+    public float TimeTarget;
+    [Tooltip("What hour the day starts at")]
+    public float dayStartTime;
     public bool TimerOn = false;
     private bool isPm = false;
+    private float TimeElapsed;      // 1 hour is 1 minute in real life
 
+    [Header("Links")]
     public TextMeshProUGUI TimerTxt;
 
     void Start()
@@ -22,6 +27,7 @@ public class DayNightScript : MonoBehaviour
 
     void Update()
     {
+        // Checks if the TimeElapsed has passed the TimeTarget and stops the timer if it has
         if (TimerOn)
         {
             if (TimeElapsed < TimeTarget)
@@ -38,6 +44,7 @@ public class DayNightScript : MonoBehaviour
         }
     }
 
+    // Updates the timer text
     void updateTimer(float currentTime)
     {
         currentTime += 1;

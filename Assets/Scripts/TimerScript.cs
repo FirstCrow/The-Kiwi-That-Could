@@ -2,8 +2,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This script controlls the timer
 public class TimerScript : MonoBehaviour
 {
+    [Header("Time Varibles (Seconds)")]
+    [Tooltip("How long the timer lasts in the resource run")]
     public float TimeLeft;
     public bool TimerOn = false;
 
@@ -16,6 +19,7 @@ public class TimerScript : MonoBehaviour
 
     void Update()
     {
+        // Checks if time is up and stops the timer if it has
         if (TimerOn)
         {
             if (TimeLeft > 0)
@@ -32,6 +36,7 @@ public class TimerScript : MonoBehaviour
         }
     }
 
+    // Updates the timer text
     void updateTimer(float currentTime)
     {
         currentTime += 1;

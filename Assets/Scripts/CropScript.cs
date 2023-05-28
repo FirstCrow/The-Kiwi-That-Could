@@ -4,17 +4,23 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
+
+// This script controlls unplanted crops
+
 public class CropScript : MonoBehaviour
 {
 
+
+    [Header("Links")]
     public GameObject plantedCrop;
     private GameObject player;
     private float playerRange;
 
-    private SpriteRenderer rend;
-    private Color originalColor;
+    [Header("Color Varibles and Links")]
     public Color outOfRangeColor;
     public Color inRangeColor;
+    private SpriteRenderer rend;
+    private Color originalColor;
 
 
     private void Start()
@@ -28,22 +34,31 @@ public class CropScript : MonoBehaviour
     private void OnMouseOver()
     {
         float distanceFromPlant = Mathf.Abs((transform.position - player.transform.position).magnitude);
-        if (distanceFromPlant <= playerRange)
+        if (!PauseMenu.getGameIsPaused())
         {
-            if(Input.GetMouseButton(0))
+            if (distanceFromPlant <= playerRange)
             {
-                Instantiate(plantedCrop, transform.position, transform.rotation);
-                Destroy(gameObject);
+                if (Input.GetMouseButton(0))
+                {
+                    PlantCrop();
+                }
+                rend.color = inRangeColor;
             }
-            rend.color = inRangeColor;
+            else
+                rend.color = outOfRangeColor;
         }
-        else
-            rend.color = outOfRangeColor;
     }
 
     private void OnMouseExit()
     {
         rend.color = originalColor;
     }
+
+    private void PlantCrop()
+    {
+        Instantiate(plantedCrop, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
     
 }
+
