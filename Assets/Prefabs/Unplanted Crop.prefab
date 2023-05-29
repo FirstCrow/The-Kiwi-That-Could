@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6212046209203031759}
   - component: {fileID: 2548167172570435128}
-  - component: {fileID: 201054269825068152}
   - component: {fileID: 1763101788}
+  - component: {fileID: 6407413245580758642}
   m_Layer: 0
   m_Name: Unplanted Crop
   m_TagString: Untagged
@@ -86,21 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &201054269825068152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003370876104920870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b72ae45dce721e4899f09563765bf03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plantedCrop: {fileID: 1003370876104920870, guid: 277d2e53b159c8d489859570f47fdda0, type: 3}
-  outOfRangeColor: {r: 0.24528301, g: 0.072312206, b: 0.005784976, a: 1}
-  inRangeColor: {r: 0.5471698, g: 0.28433904, b: 0.18325028, a: 1}
 --- !u!60 &1763101788
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -130,3 +115,18 @@ PolygonCollider2D:
       - {x: -0.5, y: 0}
       - {x: 0, y: -0.25}
       - {x: 0.5, y: 0}
+--- !u!114 &6407413245580758642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003370876104920870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b72ae45dce721e4899f09563765bf03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantedCrop: {fileID: 1003370876104920870, guid: 277d2e53b159c8d489859570f47fdda0, type: 3}
+  outOfRangeColor: {r: 0.24528301, g: 0.08568193, b: 0.0242969, a: 0}
+  inRangeColor: {r: 0.5188679, g: 0.28023762, b: 0.18845673, a: 0}
