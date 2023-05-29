@@ -8,7 +8,8 @@ public class Crop : MonoBehaviour
 {
     [Header("Crop Varibles")]
     public int cropStage;           //Used for the animator to display crop sprites
-    private float daysToGrow;       //How many days it will take for the crop to be harvestable
+    public float daysToGrow;        //How many days it will take for the crop to be harvestable
+    public Animator animator;       //Used to change crop sprite/animation depending on crop stage
     public Crop(int cropStage, float daysToGrow)
     {
         this.cropStage = cropStage;

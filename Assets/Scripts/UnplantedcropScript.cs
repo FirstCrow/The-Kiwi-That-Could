@@ -7,7 +7,7 @@ using UnityEngine;
 
 // This script controlls unplanted crops
 
-public class CropScript : MonoBehaviour
+public class UnplantedCropScript : MonoBehaviour
 {
 
 
