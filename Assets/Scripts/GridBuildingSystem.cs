@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 using UnityEngine.WSA;
 
+// This script is the main logic of the grid building system
 public class GridBuildingSystem : MonoBehaviour
 {
     public static GridBuildingSystem current;
@@ -17,7 +20,9 @@ public class GridBuildingSystem : MonoBehaviour
 
     private static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
 
+    public float ghostOpacity;
     private Building tempBuilding;
+    private SpriteRenderer rend;
     private Vector3 prevPos;
     private BoundsInt prevArea;
 
@@ -34,6 +39,7 @@ public class GridBuildingSystem : MonoBehaviour
     }
     private void Start()
     {
+    
         tileBases.Add(TileType.empty, null);
         tileBases.Add(TileType.white, whiteTile);
         tileBases.Add(TileType.green, greenTile);
@@ -47,37 +53,36 @@ public class GridBuildingSystem : MonoBehaviour
             return;
         }
 
-        if(Input.GetMouseButtonDown(0))
+        if(!tempBuilding.placed)
         {
-            if(EventSystem.current.IsPointerOverGameObject(0))
+            mainTilemap.gameObject.SetActive(true);
+            tempTilemap.gameObject.SetActive(true);
+            Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 ghostPos = gridLayout.LocalToWorld(cursorPos);
+            tempBuilding.transform.localPosition = ghostPos;
+            Vector3Int cellPos = gridLayout.LocalToCell(cursorPos);
+
+            if(prevPos != cellPos)
             {
-                return;
+                tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
+                prevPos = cellPos;
+                followBuilding();
             }
 
-            if(!tempBuilding.placed)
+            if (Input.GetMouseButtonDown(1))
             {
-                Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector3Int cellPos = gridLayout.LocalToCell(touchPos);
-
-                if(prevPos != cellPos)
+                if (tempBuilding.canBePlaced())
                 {
+                    mainTilemap.gameObject.SetActive(false);
+                    tempTilemap.gameObject.SetActive(false);
+                    rend.color = new Color(1f, 1f, 1f, 1f);
                     tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
-                    prevPos = cellPos;
-                    followBuilding();
+                    tempBuilding.place();
                 }
             }
-
         }
 
-        else if(Input.GetMouseButtonDown(1))
-        {
-            if(tempBuilding.canBePlaced())
-            {
-                tempBuilding.place();
-            }
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             clearArea();
         }
@@ -104,6 +109,7 @@ public class GridBuildingSystem : MonoBehaviour
         return array;
     }
 
+    // fills the files in area by calling fill tiles helper method
     private static void setTilesBlock(BoundsInt area, TileType type, Tilemap tilemap)
     {
         int size = area.size.x * area.size.y * area.size.z;
@@ -128,6 +134,8 @@ public class GridBuildingSystem : MonoBehaviour
     public void initializeWithBuilding(GameObject building)
     {
         tempBuilding = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
+        rend = tempBuilding.gameObject.GetComponentInChildren<SpriteRenderer>();
+        rend.color = new Color(1f, 1f, 1f, ghostOpacity);
         followBuilding();
     }
 

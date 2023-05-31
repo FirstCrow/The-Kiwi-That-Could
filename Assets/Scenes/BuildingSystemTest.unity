@@ -206,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &99762730
 Transform:
   m_ObjectHideFlags: 0
@@ -2923,6 +2923,7 @@ MonoBehaviour:
   gridLayout: {fileID: 1505369199}
   mainTilemap: {fileID: 99762732}
   tempTilemap: {fileID: 2112773485}
+  ghostOpacity: 0.8
   redTile: {fileID: 11400000, guid: ac9b139efc61b3a4483b201356172467, type: 2}
   greenTile: {fileID: 11400000, guid: ea5ce44aafdbca7409adec713189fbd7, type: 2}
   whiteTile: {fileID: 11400000, guid: 4a624a0845e66134da99d7b527a274ec, type: 2}
@@ -3340,7 +3341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1839735485 &2112773485
 Tilemap:
   m_ObjectHideFlags: 0
