@@ -53,7 +53,7 @@ public class GridBuildingSystem : MonoBehaviour
             return;
         }
 
-        if(!tempBuilding.placed)
+        if(!tempBuilding.placed && !PauseMenu.getGameIsPaused())
         {
             mainTilemap.gameObject.SetActive(true);
             tempTilemap.gameObject.SetActive(true);
@@ -69,7 +69,7 @@ public class GridBuildingSystem : MonoBehaviour
                 followBuilding();
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(0))
             {
                 if (tempBuilding.canBePlaced())
                 {
@@ -80,11 +80,14 @@ public class GridBuildingSystem : MonoBehaviour
                     tempBuilding.place();
                 }
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            clearArea();
+            if (Input.GetMouseButtonDown(1))
+            {
+                clearArea();
+                mainTilemap.gameObject.SetActive(false);
+                tempTilemap.gameObject.SetActive(false);
+                Destroy(tempBuilding.gameObject);
+                tempBuilding = null;
+            }
         }
     }
 
