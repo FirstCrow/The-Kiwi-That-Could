@@ -6,17 +6,18 @@ public class InteractableScript : MonoBehaviour
 {
     bool canInteract = false; //Is the player currently able to react to this interactable
 
-    [SerializeField] GameObject playerRef;    //Reference to player
+    private GameObject playerRef;    //Reference to player
 
+    private void Start()
+    {
+        playerRef = GameObject.FindGameObjectWithTag("Player");
+    }
     void Update()
     {
         //Interact when you press e key
-        if (Input.GetKeyDown("e"))
+        if (canInteract && Input.GetKeyDown("e"))
         {
-            if (canInteract) //Can only interact when canInteract == true
-            {
-                Debug.Log("Interact");
-            }
+            Debug.Log("Interact");
         }
 
     }
