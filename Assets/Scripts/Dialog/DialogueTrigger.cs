@@ -1,13 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-public class DialogueTrigger : MonoBehaviour
+public class DialogueTrigger : InteractableScript
 {
     public Dialogue dialogue;
+    private bool dialogueStarted = false;
 
-    public void TriggerDialogue()
+    private void Update()
     {
+        if (canInteract)
+        {
+            if(Input.GetKeyDown("e"))
+            {
+                if (!dialogueStarted)
+                    StartDialogue();
+                else
+                    ContinueDialogue();
+            }
+        }
+    }
+
+    public void StartDialogue()
+    {
+        dialogueStarted = true;
         DialogueSystemManager.current.StartDialogue(dialogue);
+    }
+
+    public void ContinueDialogue()
+    {
+        DialogueSystemManager.current.DisplayNextSentence();
     }
 }

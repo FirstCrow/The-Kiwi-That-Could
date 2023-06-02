@@ -9,10 +9,9 @@ using UnityEngine.UI;
 
 public class DialogueSystemManager : MonoBehaviour
 {
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI dialogueText;
+    private TextMeshPro nameText;
+    private TextMeshPro dialogueText;
 
-    public Animator animator;
     public float textDelay;
 
     public static DialogueSystemManager current;
@@ -30,8 +29,13 @@ public class DialogueSystemManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        animator.SetBool("IsOpen", true);
+
+        nameText = dialogue.nameText;
+        dialogueText = dialogue.dialogueText;
+
         nameText.text = dialogue.name;
+        
+        
 
         sentences.Clear();
 
@@ -69,6 +73,6 @@ public class DialogueSystemManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        animator.SetBool("IsOpen", false);
+        Debug.Log("End of Dialogue");
     }
 }

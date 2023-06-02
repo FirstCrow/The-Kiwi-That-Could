@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 971600733089477919}
   - component: {fileID: 971600733089477917}
   m_Layer: 0
-  m_Name: Interact Trigger
+  m_Name: Dialogue Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
