@@ -1,0 +1,273 @@
+fileFormatVersion: 2
+guid: 6d00aab58e41f0641b668ea205b63446
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RainForestGrass_0
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 698
+        width: 556
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -148.5}
+        - {x: 278, y: -12.5}
+        - {x: 51.16034, y: 148.5}
+        - {x: -64.563324, y: 148.5}
+        - {x: -278, y: -13.5}
+      physicsShape:
+      - - {x: 0, y: -148.5}
+        - {x: 278, y: -11.5}
+        - {x: 2, y: 130.5}
+        - {x: -278, y: -11.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 487a93cc1a56ed342b50859158ba19b6
+      internalID: 2089886402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RainForestGrass_6
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 75
+        width: 558
+        height: 280
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -140}
+        - {x: 279, y: 0}
+        - {x: 89.49292, y: 140}
+        - {x: -97.536865, y: 140}
+        - {x: -279, y: 0}
+      physicsShape:
+      - - {x: 0, y: -140}
+        - {x: 279, y: -2}
+        - {x: 3, y: 139}
+        - {x: -278, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ef52ee89f3bab943bbb96aa2de62602
+      internalID: -1010378460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: -708, y: -186}
+      - {x: -777, y: -215}
+      - {x: -777, y: -342}
+      - {x: -583, y: -468}
+      - {x: -488, y: -468}
+      - {x: -231, y: -356}
+      - {x: -219, y: -341}
+      - {x: -219, y: -287}
+      - {x: -279, y: -186}
+    - - {x: 165, y: -186}
+      - {x: 157, y: -189}
+      - {x: 91, y: -223}
+      - {x: 56, y: -255}
+      - {x: 56, y: -261}
+      - {x: 57, y: -263}
+      - {x: 185, y: -330}
+      - {x: 201, y: -330}
+      - {x: 341, y: -264}
+      - {x: 341, y: -248}
+      - {x: 224, y: -186}
+    - - {x: 519, y: 200}
+      - {x: 296, y: 98}
+      - {x: 193, y: 23}
+      - {x: 193, y: 10}
+      - {x: 523, y: -155}
+      - {x: 557, y: -155}
+      - {x: 894, y: 13}
+      - {x: 894, y: 36}
+      - {x: 587, y: 200}
+    - - {x: -236, y: 318}
+      - {x: -431, y: 450}
+      - {x: -532, y: 450}
+      - {x: -776, y: 310}
+      - {x: -776, y: 292}
+      - {x: -775, y: 289}
+      - {x: -742, y: 272}
+      - {x: -501, y: 155}
+      - {x: -486, y: 155}
+      - {x: -238, y: 281}
+      - {x: -218, y: 293}
+      - {x: -218, y: 300}
+    - - {x: 223, y: 374}
+      - {x: 178, y: 374}
+      - {x: 56, y: 302}
+      - {x: 56, y: 295}
+      - {x: 178, y: 226}
+      - {x: 209, y: 226}
+      - {x: 337, y: 289}
+      - {x: 337, y: 301}
+      - {x: 277, y: 340}
+    physicsShape:
+    - - {x: -779, y: -326}
+      - {x: -501, y: -467}
+      - {x: -214, y: -327}
+      - {x: -497, y: -186}
+    - - {x: 106, y: -187}
+      - {x: 56, y: -244}
+      - {x: 56, y: -260}
+      - {x: 175, y: -329}
+      - {x: 212, y: -329}
+      - {x: 340, y: -264}
+      - {x: 340, y: -217}
+      - {x: 254, y: -187}
+    - - {x: 269, y: 199}
+      - {x: 194, y: 43}
+      - {x: 194, y: 16}
+      - {x: 530, y: -154}
+      - {x: 549, y: -154}
+      - {x: 893, y: 13}
+      - {x: 893, y: 169}
+      - {x: 685, y: 199}
+    - - {x: -777, y: 296}
+      - {x: -499, y: 157}
+      - {x: -216, y: 297}
+      - {x: -495, y: 438}
+    - - {x: 188, y: 373}
+      - {x: 57, y: 300}
+      - {x: 57, y: 291}
+      - {x: 193, y: 227}
+      - {x: 206, y: 227}
+      - {x: 337, y: 291}
+      - {x: 337, y: 305}
+      - {x: 226, y: 373}
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      RainForestGrass_0: 2089886402
+      RainForestGrass_1: -770355474
+      RainForestGrass_2: -1103693631
+      RainForestGrass_3: -1355830753
+      RainForestGrass_4: 474391564
+      RainForestGrass_5: -472562817
+      RainForestGrass_6: -1010378460
+      RainForestGrass_7: 1292903561
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
