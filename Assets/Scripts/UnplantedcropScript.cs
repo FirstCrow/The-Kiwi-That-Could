@@ -47,7 +47,7 @@ public class UnplantedCropScript : MonoBehaviour
                     Debug.Log("Player has seeds");
                     if (Input.GetMouseButton(0))
                     {
-                        invSlot[0].RemoveFromStack(1);
+                        invSlot[invSlot.Count - 1].RemoveFromStack(1);
                         PlantCrop();
                     }
                     rend.color = inRangeColor;
