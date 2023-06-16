@@ -15,13 +15,19 @@ public class MechController : MonoBehaviour
     public GameObject rotationPoint;
     public GameObject bulletSpawnPoint;
     public GameObject bullet;
+    public Transform graphics;
+    private Animator animator;
     private Rigidbody2D rb;
+    private bool flippedSprite;
 
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
+        flippedSprite = false;
+        graphics = transform.GetChild(0);
     }
 
 
@@ -35,6 +41,31 @@ public class MechController : MonoBehaviour
         {
             shoot();
         }
+
+        if (Mathf.Abs(rb.velocity.magnitude) > 0 && !animator.GetBool("isWalking"))
+        {
+            animator.SetBool("isWalking", true);
+        }
+
+        else if (Mathf.Abs(rb.velocity.magnitude) == 0 && animator.GetBool("isWalking"))
+        {
+            animator.SetBool("isWalking", false);
+        }
+
+
+        if(!flippedSprite && rb.velocity.x > 0)
+        {
+            graphics.rotation = Quaternion.Euler(0, 180, 0);
+            flippedSprite = true;
+        }
+        else if(flippedSprite && rb.velocity.x < 0)
+        {
+            graphics.rotation = Quaternion.Euler(0, 0, 0);
+            flippedSprite = false;
+        }
+
+        
+
     }
 
     private void FixedUpdate()
@@ -48,7 +79,6 @@ public class MechController : MonoBehaviour
         {
             rb.velocity = ConvertToIso(direction * speed);
         }
-
 
 
         // Locks the rotation of the player to 8 directions
