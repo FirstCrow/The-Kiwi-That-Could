@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c9983ea4494eed4293519d34375638b
-      internalID: 1970061123
+      spriteID: afa13d9b927ad9e40b257042b3191757
+      internalID: 1709419416
       vertices: []
       indices: 
       edges: []
@@ -136,7 +136,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Base Lit Grass_0: 1970061123
+      Base Lit Grass_0: 1709419416
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

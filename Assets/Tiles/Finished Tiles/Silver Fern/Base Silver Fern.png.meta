@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3916d35f4f1c0a742bb387fb50174c0b
-      internalID: -1539423340
+      spriteID: 5030a65dcbac35b4e9156700c04e6ffb
+      internalID: 113886743
       vertices: []
       indices: 
       edges: []
@@ -136,7 +136,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Base Silver Fern_0: -1539423340
+      Base Silver Fern_0: 113886743
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
