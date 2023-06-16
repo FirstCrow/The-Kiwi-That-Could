@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c34f58d85ca91a1489cbe74596f858a7, type: 3}
-  m_Name: Test Item 1
+  m_Name: Auto_Shop_Blueprint
   m_EditorClassIdentifier: 
-  ID: 1
-  DisplayName: Test Item 1
-  Description: This is a test item.
+  ID: 0
+  DisplayName: 
+  Description: 
   Icon: {fileID: 0}
-  MaxStackSize: 5
+  MaxStackSize: 0

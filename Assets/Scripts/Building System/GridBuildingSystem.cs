@@ -25,6 +25,8 @@ public class GridBuildingSystem : MonoBehaviour
     private SpriteRenderer rend;
     private Vector3 prevPos;
     private BoundsInt prevArea;
+    private InventoryHolder playerInventory;
+    public InventoryItemData AutoShopBlueprint;
 
     public TileBase redTile;
     public TileBase greenTile;
@@ -36,6 +38,7 @@ public class GridBuildingSystem : MonoBehaviour
     private void Awake()
     {
         current = this;
+        playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryHolder>();
     }
     private void Start()
     {
@@ -71,10 +74,11 @@ public class GridBuildingSystem : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (tempBuilding.canBePlaced())
+                if (playerInventory.InventorySystem.ContainsItem(AutoShopBlueprint, out List<InventorySlot> invSlot) && tempBuilding.canBePlaced())
                 {
                     mainTilemap.gameObject.SetActive(false);
                     tempTilemap.gameObject.SetActive(false);
+                    invSlot[invSlot.Count - 1].RemoveFromStack(1);
                     rend.color = new Color(1f, 1f, 1f, 1f);
                     tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
                     tempBuilding.place();

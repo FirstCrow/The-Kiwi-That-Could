@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using System.Linq;
 
 
 // This script controlls unplanted crops
@@ -19,8 +20,10 @@ public class UnplantedCropScript : MonoBehaviour
     [Header("Color Varibles and Links")]
     public Color outOfRangeColor;
     public Color inRangeColor;
+    public InventoryItemData kiwiSeedData;
     private SpriteRenderer rend;
     private Color originalColor;
+    private InventoryHolder playerInventory;
 
 
     private void Start()
@@ -29,6 +32,7 @@ public class UnplantedCropScript : MonoBehaviour
         playerRange = FindObjectOfType<PlayerController>().GetCropRange();
         rend = GetComponent<SpriteRenderer>();
         originalColor = rend.color;
+        playerInventory = player.GetComponent<InventoryHolder>();
     }
  
     private void OnMouseOver()
@@ -38,11 +42,16 @@ public class UnplantedCropScript : MonoBehaviour
         {
             if (distanceFromPlant <= playerRange)
             {
-                if (Input.GetMouseButton(0))
+                if (playerInventory.InventorySystem.ContainsItem(kiwiSeedData, out List<InventorySlot> invSlot))
                 {
-                    PlantCrop();
+                    Debug.Log("Player has seeds");
+                    if (Input.GetMouseButton(0))
+                    {
+                        invSlot[invSlot.Count - 1].RemoveFromStack(1);
+                        PlantCrop();
+                    }
+                    rend.color = inRangeColor;
                 }
-                rend.color = inRangeColor;
             }
             else
                 rend.color = outOfRangeColor;
