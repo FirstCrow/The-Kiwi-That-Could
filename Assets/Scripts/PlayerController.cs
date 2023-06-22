@@ -12,12 +12,16 @@ public class PlayerController : MonoBehaviour
     public float cropRange;
     private Vector2 direction;
     private Rigidbody2D rb;
+    private Animator animator;
+    private bool flippedSprite;
+    public Transform graphics;
 
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     
@@ -25,6 +29,31 @@ public class PlayerController : MonoBehaviour
     {
         direction.x = Input.GetAxisRaw("Horizontal");   //Get Horizontal Inputs (A or D | Left or Right)
         direction.y = Input.GetAxisRaw("Vertical");     //Get Vertical Inputs (W or S | Up or Down)
+
+        if (Mathf.Abs(rb.velocity.magnitude) > 0 && !animator.GetBool("isWalking"))
+        {
+            animator.SetBool("isWalking", true);
+        }
+
+        else if (Mathf.Abs(rb.velocity.magnitude) == 0 && animator.GetBool("isWalking"))
+        {
+            animator.SetBool("isWalking", false);
+        }
+
+
+        if (!flippedSprite && rb.velocity.x > 0)
+        {
+            graphics.rotation = Quaternion.Euler(0, 180, 0);
+            flippedSprite = true;
+        }
+        else if (flippedSprite && rb.velocity.x < 0)
+        {
+            graphics.rotation = Quaternion.Euler(0, 0, 0);
+            flippedSprite = false;
+        }
+
+
+
     }
 
     private void FixedUpdate()

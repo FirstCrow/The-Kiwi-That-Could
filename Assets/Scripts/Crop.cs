@@ -16,7 +16,7 @@ public class Crop : MonoBehaviour
     private bool harvestable;            //is the crop harvestable
 
     [Header("Player Varibles")]
-    private GameObject player;
+    public GameObject player;
     private float playerRange;
 
     [Header("Color Varibles")]
@@ -32,8 +32,7 @@ public class Crop : MonoBehaviour
     {
 
         // Initializes crop and player varibles
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerRange = FindObjectOfType<PlayerController>().GetCropRange();
+        playerRange = player.GetComponent<PlayerController>().GetCropRange();
         cropStage = 1;
         stageDaysElapsed = 0;
         harvestable = false;

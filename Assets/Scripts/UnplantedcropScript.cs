@@ -21,6 +21,7 @@ public class UnplantedCropScript : MonoBehaviour
     public Color outOfRangeColor;
     public Color inRangeColor;
     public InventoryItemData kiwiSeedData;
+    public InventoryDisplay playerHotbar;
     private SpriteRenderer rend;
     private Color originalColor;
     private InventoryHolder playerInventory;

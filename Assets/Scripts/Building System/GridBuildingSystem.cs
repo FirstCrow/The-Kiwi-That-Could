@@ -26,11 +26,16 @@ public class GridBuildingSystem : MonoBehaviour
     private Vector3 prevPos;
     private BoundsInt prevArea;
     private InventoryHolder playerInventory;
+    private bool buildModeEnabled;
     public InventoryItemData AutoShopBlueprint;
 
     public TileBase redTile;
     public TileBase greenTile;
     public TileBase whiteTile;
+
+    [Header("TEMP VARIBLES")]
+
+    public GameObject AutoShop;
 
 
     #region Unity Methods
@@ -42,6 +47,7 @@ public class GridBuildingSystem : MonoBehaviour
     }
     private void Start()
     {
+        buildModeEnabled = false;
     
         tileBases.Add(TileType.empty, null);
         tileBases.Add(TileType.white, whiteTile);
@@ -51,7 +57,13 @@ public class GridBuildingSystem : MonoBehaviour
 
     private void Update()
     {
-        if(tempBuilding == null)
+
+        if (!buildModeEnabled && !PauseMenu.getGameIsPaused() && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("BuildModeEnabled");
+            initializeWithBuilding(AutoShop);
+        }
+        if (tempBuilding == null)
         {
             return;
         }
@@ -89,6 +101,7 @@ public class GridBuildingSystem : MonoBehaviour
                 clearArea();
                 mainTilemap.gameObject.SetActive(false);
                 tempTilemap.gameObject.SetActive(false);
+                buildModeEnabled = false;
                 Destroy(tempBuilding.gameObject);
                 tempBuilding = null;
             }
@@ -143,6 +156,7 @@ public class GridBuildingSystem : MonoBehaviour
         tempBuilding = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
         rend = tempBuilding.gameObject.GetComponentInChildren<SpriteRenderer>();
         rend.color = new Color(1f, 1f, 1f, ghostOpacity);
+        buildModeEnabled = true;
         followBuilding();
     }
 

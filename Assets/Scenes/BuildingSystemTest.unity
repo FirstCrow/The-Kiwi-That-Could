@@ -2930,7 +2930,7 @@ GameObject:
   - component: {fileID: 1505369199}
   - component: {fileID: 1505369201}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: BuildingSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
