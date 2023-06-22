@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Auto_Shop_Blueprint
   m_EditorClassIdentifier: 
   ID: 0
-  DisplayName: 
+  DisplayName: Autoshop Blueprint
   Description: 
-  Icon: {fileID: 0}
-  MaxStackSize: 0
+  Icon: {fileID: 21300000, guid: 5220710de74be0b4e8f62a652705f1fe, type: 3}
+  MaxStackSize: 1

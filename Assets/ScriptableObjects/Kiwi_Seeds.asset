@@ -15,5 +15,5 @@ MonoBehaviour:
   ID: 1
   DisplayName: Kiwi_Seeds
   Description: Use this to plant kiwi fruit!
-  Icon: {fileID: 0}
+  Icon: {fileID: -2413806693520163455, guid: e53ed7c38d285f24fb18bae49ee39726, type: 3}
   MaxStackSize: 50

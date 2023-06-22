@@ -57,8 +57,9 @@ public class GridBuildingSystem : MonoBehaviour
 
     private void Update()
     {
+        bool hasBlueprint = playerInventory.InventorySystem.ContainsItem(AutoShopBlueprint, out List<InventorySlot> invSlot);
 
-        if (!buildModeEnabled && !PauseMenu.getGameIsPaused() && Input.GetKeyDown(KeyCode.E))
+        if (!buildModeEnabled && !PauseMenu.getGameIsPaused() && Input.GetKeyDown(KeyCode.Tab) && hasBlueprint)
         {
             Debug.Log("BuildModeEnabled");
             initializeWithBuilding(AutoShop);
@@ -86,7 +87,7 @@ public class GridBuildingSystem : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (playerInventory.InventorySystem.ContainsItem(AutoShopBlueprint, out List<InventorySlot> invSlot) && tempBuilding.canBePlaced())
+                if (hasBlueprint && tempBuilding.canBePlaced())
                 {
                     mainTilemap.gameObject.SetActive(false);
                     tempTilemap.gameObject.SetActive(false);
