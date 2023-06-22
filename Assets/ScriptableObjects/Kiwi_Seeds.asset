@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34f58d85ca91a1489cbe74596f858a7, type: 3}
   m_Name: Kiwi_Seeds
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1
   DisplayName: Kiwi_Seeds
   Description: Use this to plant kiwi fruit!
   Icon: {fileID: 0}
-  MaxStackSize: 10
+  MaxStackSize: 50
