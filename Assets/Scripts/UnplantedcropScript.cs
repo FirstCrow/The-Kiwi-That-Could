@@ -41,19 +41,14 @@ public class UnplantedCropScript : MonoBehaviour
         float distanceFromPlant = Mathf.Abs((transform.position - player.transform.position).magnitude);
         if (!PauseMenu.getGameIsPaused())
         {
-            if (distanceFromPlant <= playerRange)
+            if (distanceFromPlant <= playerRange && playerInventory.InventorySystem.ContainsItem(kiwiSeedData, out List<InventorySlot> invSlot))
             {
-                if (playerInventory.InventorySystem.ContainsItem(kiwiSeedData, out List<InventorySlot> invSlot))
+                if (Input.GetMouseButton(0))
                 {
-                    Debug.Log("Player has seeds");
-                    if (Input.GetMouseButton(0))
-                    {
-                        invSlot[invSlot.Count - 1].RemoveFromStack(1);
-                        
-                        PlantCrop();
-                    }
-                    rend.color = inRangeColor;
+                    invSlot[invSlot.Count - 1].RemoveFromStack(1);
+                    PlantCrop();
                 }
+                rend.color = inRangeColor;
             }
             else
                 rend.color = outOfRangeColor;

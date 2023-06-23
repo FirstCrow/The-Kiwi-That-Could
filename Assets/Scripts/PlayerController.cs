@@ -13,8 +13,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 direction;
     private Rigidbody2D rb;
     private Animator animator;
-    private bool flippedSprite;
+    private bool flippedHorizontal;
+    private bool flippedVertical;
     public Transform graphics;
+    public GameObject frontSprite;
+    public GameObject backSprite;
 
 
 
@@ -30,7 +33,7 @@ public class PlayerController : MonoBehaviour
         direction.x = Input.GetAxisRaw("Horizontal");   //Get Horizontal Inputs (A or D | Left or Right)
         direction.y = Input.GetAxisRaw("Vertical");     //Get Vertical Inputs (W or S | Up or Down)
 
-        if (Mathf.Abs(rb.velocity.magnitude) > 0 && !animator.GetBool("isWalking"))
+        /*if (Mathf.Abs(rb.velocity.magnitude) > 0 && !animator.GetBool("isWalking"))
         {
             animator.SetBool("isWalking", true);
         }
@@ -39,17 +42,66 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
         }
+        */
 
 
-        if (!flippedSprite && rb.velocity.x > 0)
+
+
+        if (direction.x == 0 && direction.y > 0)          // Sets rotation point up
         {
+            frontSprite.SetActive(false);
+            backSprite.SetActive(true);
             graphics.rotation = Quaternion.Euler(0, 180, 0);
-            flippedSprite = true;
         }
-        else if (flippedSprite && rb.velocity.x < 0)
+        else if (direction.x > 0 && direction.y > 0)       // Sets rotation point up-right
         {
+            frontSprite.SetActive(false);
+            backSprite.SetActive(true);
             graphics.rotation = Quaternion.Euler(0, 0, 0);
-            flippedSprite = false;
+        }
+        else if (direction.x > 0 && direction.y == 0)     // Sets rotation point right
+        {
+            
+            if(backSprite.activeInHierarchy)
+            {
+                graphics.rotation = Quaternion.Euler(0, 0, 0);
+                return;
+            }
+            else
+                graphics.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (direction.x > 0 && direction.y < 0)      // Sets rotation point down-right
+        {
+            frontSprite.SetActive(true);
+            backSprite.SetActive(false);
+            graphics.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (direction.x == 0 && direction.y < 0)     // Sets rotation point down
+        {
+            frontSprite.SetActive(true);
+            backSprite.SetActive(false);
+        }
+        else if (direction.x < 0 && direction.y < 0)      // Sets rotation point down-left
+        {
+            frontSprite.SetActive(true);
+            backSprite.SetActive(false);
+            graphics.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (direction.x < 0 && direction.y == 0)      // Sets rotation point left
+        {
+            if (backSprite.activeInHierarchy)
+            {
+                graphics.rotation = Quaternion.Euler(0, 180, 0);
+                return;
+            }
+            else
+                graphics.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (direction.x < 0 && direction.y > 0)      // Sets rotation point up-left
+        {
+            frontSprite.SetActive(false);
+            backSprite.SetActive(true);
+            graphics.rotation = Quaternion.Euler(0, 180, 0);
         }
 
 

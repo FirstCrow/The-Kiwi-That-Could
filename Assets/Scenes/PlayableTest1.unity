@@ -17730,6 +17730,14 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.5358083
       objectReference: {fileID: 0}
+    - target: {fileID: 3610976293360133744, guid: e4af86f423597b0469a708feedf9551b, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3610976293360133744, guid: e4af86f423597b0469a708feedf9551b, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4454723264768702400, guid: e4af86f423597b0469a708feedf9551b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -21947,7 +21955,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5, y: 1, z: 0}
+  m_ChunkCullingBounds: {x: 0.5037174, y: 1.0055761, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 3
@@ -23945,6 +23953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemSprite: {fileID: 1193453087}
   ItemCount: {fileID: 1708481199}
+  ItemID: 0
   AssignedInventorySlot:
     itemData: {fileID: 0}
     stackSize: -1

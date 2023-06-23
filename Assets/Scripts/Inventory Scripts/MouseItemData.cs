@@ -9,6 +9,7 @@ public class MouseItemData : MonoBehaviour
 {
     public Image ItemSprite;
     public TextMeshProUGUI ItemCount;
+    public int ItemID;
     public InventorySlot AssignedInventorySlot;
 
     private void Awake()
@@ -24,9 +25,10 @@ public class MouseItemData : MonoBehaviour
         {
             transform.position = Input.mousePosition;
 
-            if(Input.GetMouseButtonDown(0) && !IsPointerOverUIObject())
+            if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObject())
             {
                 ClearSlot();
+                return;
             }
         }
     }
@@ -36,6 +38,7 @@ public class MouseItemData : MonoBehaviour
         AssignedInventorySlot.AssignItem(invSlot);
         ItemSprite.sprite = invSlot.ItemData.Icon;
         ItemCount.text = invSlot.StackSize.ToString();
+        ItemID = invSlot.ItemData.ID;
         ItemSprite.color = Color.white;
     }
 
@@ -45,6 +48,7 @@ public class MouseItemData : MonoBehaviour
         ItemCount.text = "";
         ItemSprite.color = Color.clear;
         ItemSprite.sprite = null;
+        ItemID = 0;
     }
 
     private static bool IsPointerOverUIObject()
