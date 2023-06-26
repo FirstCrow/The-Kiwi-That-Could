@@ -16885,6 +16885,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1325591843662647693, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
+      propertyPath: m_Spacing
+      value: 6.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325591843662647693, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325591843662647693, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
+      propertyPath: m_Padding.m_Left
+      value: 146
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325591843662647693, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
+      propertyPath: m_Padding.m_Bottom
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325591843662647695, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0621773cc75acab488983eef1c2f6c15, type: 3}
     - target: {fileID: 1325591844745426773, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
