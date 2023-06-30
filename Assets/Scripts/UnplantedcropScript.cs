@@ -46,6 +46,7 @@ public class UnplantedCropScript : MonoBehaviour
                 if (Input.GetMouseButton(0))
                 {
                     invSlot[invSlot.Count - 1].RemoveFromStack(1);
+                    player.GetComponent<InventoryHolder>().InventorySystem.UpdateAllSlots();
                     PlantCrop();
                 }
                 rend.color = inRangeColor;

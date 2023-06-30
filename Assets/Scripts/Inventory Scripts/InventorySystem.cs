@@ -65,4 +65,12 @@ public class InventorySystem
         freeSlot = InventorySlots.FirstOrDefault(i => i.ItemData == null);
         return freeSlot == null ? false : true;
     }
+
+    public void UpdateAllSlots()
+    {
+        foreach(var slot in inventorySlots)
+        {
+            OnInventorySlotChanged?.Invoke(slot);
+        }
+    }
 }

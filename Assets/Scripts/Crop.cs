@@ -22,11 +22,11 @@ public class Crop : MonoBehaviour
     [Header("Color Varibles")]
     public Color outOfRangeColor;
     public Color inRangeColor;
-    private SpriteRenderer rend;
     private Color originalColor;
 
     [Header("Links")]
     public Animator animator;      //Used to change crop sprite/animation depending on crop stage
+    public GameObject graphics;
 
     private void Start()
     {
@@ -38,9 +38,9 @@ public class Crop : MonoBehaviour
         harvestable = false;
         DayNightScript.current.onNewDay += cropNewDay;
 
-        // Gets original color
+        /* Gets original color
         rend = GetComponent<SpriteRenderer>();
-        originalColor = rend.color;
+        originalColor = rend.color;*/
     }
 
     // Called whenever it is a new day via event in DayNightScript
@@ -59,7 +59,9 @@ public class Crop : MonoBehaviour
     {
         stageDaysElapsed = 0;
         cropStage++;
-        animator.SetInteger("cropStage", cropStage);
+        graphics.transform.GetChild(cropStage - 2).gameObject.SetActive(false);
+        graphics.transform.GetChild(cropStage - 1).gameObject.SetActive(true); ;
+       
 
         // If the crop is fully grown it is harvestable
         if (cropStage >= numCropStages)
@@ -85,16 +87,16 @@ public class Crop : MonoBehaviour
                 {
                     harvestCrop();
                 }
-                rend.color = inRangeColor;
+                //rend.color = inRangeColor;
             }
-            else
-                rend.color = outOfRangeColor;
+            //else
+               //rend.color = outOfRangeColor;
         }
     }
 
     private void OnMouseExit()
     {
-        rend.color = originalColor;
+        //rend.color = originalColor;
     }
 
 }
