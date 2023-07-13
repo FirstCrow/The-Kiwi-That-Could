@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1227825890983627087}
   - component: {fileID: 1227825890983627072}
   m_Layer: 0
-  m_Name: Kiwi_Seed
+  m_Name: Kiwi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,7 +137,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9fbbb4daddf0b3440ae2bbb56d7081c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e35a8b89f91395c428dab3b70968f545, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

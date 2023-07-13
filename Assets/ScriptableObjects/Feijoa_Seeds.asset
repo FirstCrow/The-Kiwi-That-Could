@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c34f58d85ca91a1489cbe74596f858a7, type: 3}
-  m_Name: Gourd_Fruit
+  m_Name: Feijoa_Seeds
   m_EditorClassIdentifier: 
-  ID: 6
-  DisplayName: Gourd
-  Description: 
-  Icon: {fileID: 0}
-  MaxStackSize: 0
+  ID: 3
+  DisplayName: Feijoa Seeds
+  Description: This is a Feijoa!
+  Icon: {fileID: 21300000, guid: b13f674ab6a1a8e49b46247c041446f9, type: 3}
+  MaxStackSize: 10
