@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c34f58d85ca91a1489cbe74596f858a7, type: 3}
-  m_Name: Kumara_Shoot
+  m_Name: Castle
   m_EditorClassIdentifier: 
-  ID: 3
-  DisplayName: Kumara Shoot
-  Description: This is a potato!
-  Icon: {fileID: 21300000, guid: f942051b699a9a64fa45489add5d7bde, type: 3}
-  MaxStackSize: 5
+  ID: 10
+  DisplayName: Castle
+  Description: 
+  Icon: {fileID: 21300000, guid: c38e69f3b61f4524bbb95eaa131c3ba4, type: 3}
+  MaxStackSize: 1

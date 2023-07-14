@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickUpRadius: 1
-  ItemData: {fileID: 11400000, guid: c7f63845823e85343995afff5cf17574, type: 2}
+  ItemData: {fileID: 11400000, guid: a0e403ced47f6af4d90725f9c7b4c703, type: 2}
 --- !u!1 &4612692550590851794
 GameObject:
   m_ObjectHideFlags: 0
