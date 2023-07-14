@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c34f58d85ca91a1489cbe74596f858a7, type: 3}
-  m_Name: Castle
+  m_Name: Spider_Silk
   m_EditorClassIdentifier: 
-  ID: 10
-  DisplayName: Castle
+  ID: 11
+  DisplayName: Spider Silk
   Description: 
-  Icon: {fileID: 21300000, guid: 0f18febef2fa26b46a9650e708140539, type: 3}
-  MaxStackSize: 1
+  Icon: {fileID: 21300000, guid: f862b3a4599514c45afcde1627a4ca82, type: 3}
+  MaxStackSize: 64

@@ -15,5 +15,5 @@ MonoBehaviour:
   ID: 9
   DisplayName: Garage
   Description: 
-  Icon: {fileID: 21300000, guid: ea667b625e1b3b648a8db82797b9549c, type: 3}
+  Icon: {fileID: 21300000, guid: 0f18febef2fa26b46a9650e708140539, type: 3}
   MaxStackSize: 1
