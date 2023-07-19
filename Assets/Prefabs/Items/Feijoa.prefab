@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1223636135579909693}
   - component: {fileID: 1223636135579909692}
   - component: {fileID: 1223636135579909695}
+  - component: {fileID: 2223249430391771706}
   m_Layer: 0
   m_Name: Feijoa
   m_TagString: Untagged
@@ -64,6 +65,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickUpRadius: 1
   ItemData: {fileID: 11400000, guid: 161f436f21cd25544982c348b4e74684, type: 2}
+  magnetStrength: 3
+--- !u!50 &2223249430391771706
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223636135579909690}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1223636136291130364
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1223636136291130367}
   - component: {fileID: 1223636136291130366}
+  - component: {fileID: 8588299510399287618}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -148,3 +172,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &8588299510399287618
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223636136291130364}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: c45864a64b702b64b87627ef933e7289, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c45864a64b702b64b87627ef933e7289, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
