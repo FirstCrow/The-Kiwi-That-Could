@@ -47,6 +47,26 @@ public class InventorySystem
         }
         return false;
     }
+
+    public bool CheckAddToInventory(InventoryItemData itemToAdd)
+    {
+        if (ContainsItem(itemToAdd, out List<InventorySlot> invSlot)) // Check whether item exists in inventory.
+        {
+            foreach (var slot in invSlot)
+            {
+                if (slot.RoomLeftInStack(1))
+                {
+                    return true;
+                }
+            }
+        }
+
+        if (HasFreeSlot(out InventorySlot freeSlot)) // Gets the first available slot
+        {
+            return true;
+        }
+        return false;
+    }
     public bool ContainsItem(InventoryItemData itemToAdd, out List<InventorySlot> invSlot)
     {
         invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();

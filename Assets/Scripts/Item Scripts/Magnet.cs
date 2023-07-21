@@ -9,7 +9,7 @@ public class Magnet : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<ItemPickUps>(out ItemPickUps item))
         {
-            item.SetTarget(transform.parent.position);
+            item.SetTarget(transform.parent);
         }
     }
 }

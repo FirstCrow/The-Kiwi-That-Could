@@ -66,6 +66,8 @@ MonoBehaviour:
   PickUpRadius: 1
   ItemData: {fileID: 11400000, guid: 161f436f21cd25544982c348b4e74684, type: 2}
   magnetStrength: 3
+  magnetAcceleration: 0.01
+  pickupSound: {fileID: -2772012981123939704, guid: f859e4fa6ce383842b823099eec9ef4c, type: 3}
 --- !u!50 &2223249430391771706
 Rigidbody2D:
   serializedVersion: 4
