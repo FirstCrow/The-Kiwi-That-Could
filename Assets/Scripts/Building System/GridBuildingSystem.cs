@@ -27,7 +27,6 @@ public class GridBuildingSystem : MonoBehaviour
     private BoundsInt prevArea;
     private InventoryHolder playerInventory;
     private bool buildModeEnabled;
-    public InventoryItemData AutoShopBlueprint;
 
     public TileBase redTile;
     public TileBase greenTile;
@@ -36,6 +35,13 @@ public class GridBuildingSystem : MonoBehaviour
     [Header("TEMP VARIBLES")]
 
     public GameObject AutoShop;
+    public GameObject Castle;
+    public GameObject Storage;
+    public GameObject player;
+    public InventoryItemData AutoShopBlueprint;
+    public InventoryItemData CastleBlueprint;
+    public InventoryItemData StorageBlueprint;
+
 
 
     #region Unity Methods
@@ -59,10 +65,27 @@ public class GridBuildingSystem : MonoBehaviour
     {
         bool hasBlueprint = playerInventory.InventorySystem.ContainsItem(AutoShopBlueprint, out List<InventorySlot> invSlot);
 
-        if (!buildModeEnabled && !PauseMenu.getGameIsPaused() && Input.GetKeyDown(KeyCode.Tab) && hasBlueprint)
+        if (!buildModeEnabled && !PauseMenu.getGameIsPaused() && hasBlueprint)
         {
-            Debug.Log("BuildModeEnabled");
-            initializeWithBuilding(AutoShop);
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Debug.Log("BuildModeEnabled");
+                initializeWithBuilding(AutoShop);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Debug.Log("BuildModeEnabled");
+                initializeWithBuilding(Castle);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Debug.Log("BuildModeEnabled");
+                initializeWithBuilding(Storage);
+            }
+
+
         }
         if (tempBuilding == null)
         {
@@ -94,6 +117,8 @@ public class GridBuildingSystem : MonoBehaviour
                     invSlot[invSlot.Count - 1].RemoveFromStack(1);
                     rend.color = new Color(1f, 1f, 1f, 1f);
                     tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
+                    buildModeEnabled = false;
+                    player.GetComponent<InventoryHolder>().InventorySystem.UpdateAllSlots();
                     tempBuilding.place();
                 }
             }

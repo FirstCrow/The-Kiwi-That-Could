@@ -2985,6 +2985,9 @@ MonoBehaviour:
   redTile: {fileID: 11400000, guid: ac9b139efc61b3a4483b201356172467, type: 2}
   greenTile: {fileID: 11400000, guid: ea5ce44aafdbca7409adec713189fbd7, type: 2}
   whiteTile: {fileID: 11400000, guid: 4a624a0845e66134da99d7b527a274ec, type: 2}
+  AutoShop: {fileID: 8383797516691751177, guid: d0e7efbeccb23784f8de3a862b46ba46, type: 3}
+  Castle: {fileID: 8383797516691751177, guid: ef086aec499b0a84192dbc0ca721b3a9, type: 3}
+  Storage: {fileID: 6233560617890170513, guid: 8fab14d9ff3cdeb48bc843c3642a25b0, type: 3}
 --- !u!1001 &1662929602
 PrefabInstance:
   m_ObjectHideFlags: 0
