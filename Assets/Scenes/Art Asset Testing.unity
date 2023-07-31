@@ -199,6 +199,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4454723264768702414, guid: e4af86f423597b0469a708feedf9551b, type: 3}
+      propertyPath: backSprite
+      value: 
+      objectReference: {fileID: 2041395751}
+    - target: {fileID: 4454723264768702414, guid: e4af86f423597b0469a708feedf9551b, type: 3}
+      propertyPath: frontSprite
+      value: 
+      objectReference: {fileID: 467644046}
     - target: {fileID: 4454723264768702415, guid: e4af86f423597b0469a708feedf9551b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1528,6 +1536,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaa6f98bac42a8a4d9f5589218aee3a3, type: 3}
+--- !u!1 &467644046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2682144136751091486, guid: e4af86f423597b0469a708feedf9551b, type: 3}
+  m_PrefabInstance: {fileID: 7343860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -34404,26 +34417,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1325591843662647693, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
-      propertyPath: m_Spacing
-      value: 6.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1325591843662647693, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
-      propertyPath: m_Padding.m_Top
-      value: 39
-      objectReference: {fileID: 0}
-    - target: {fileID: 1325591843662647693, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
-      propertyPath: m_Padding.m_Left
-      value: 146
-      objectReference: {fileID: 0}
-    - target: {fileID: 1325591843662647693, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
-      propertyPath: m_Padding.m_Bottom
-      value: 24
-      objectReference: {fileID: 0}
     - target: {fileID: 1325591843662647695, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 553814f341e5f1746803d8f5c882fb36, type: 3}
+      objectReference: {fileID: 21300000, guid: 1617083f9d9c0264e9dc5a04552eeafc, type: 3}
     - target: {fileID: 1325591844745426773, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -143245,6 +143242,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaace1fb2d41d06468f0af6fd3fef9a1, type: 3}
+--- !u!1 &2041395751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5347054798330328790, guid: e4af86f423597b0469a708feedf9551b, type: 3}
+  m_PrefabInstance: {fileID: 7343860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2050808151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1227825890983627073, guid: 1b3755646fbdb6b4e8a258cf935a7394, type: 3}
