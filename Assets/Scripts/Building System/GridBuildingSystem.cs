@@ -94,8 +94,6 @@ public class GridBuildingSystem : MonoBehaviour
 
         if(!tempBuilding.placed && !PauseMenu.getGameIsPaused())
         {
-            mainTilemap.gameObject.SetActive(true);
-            tempTilemap.gameObject.SetActive(true);
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 ghostPos = gridLayout.LocalToWorld(cursorPos);
             tempBuilding.transform.localPosition = ghostPos;
@@ -112,12 +110,10 @@ public class GridBuildingSystem : MonoBehaviour
             {
                 if (hasBlueprint && tempBuilding.canBePlaced())
                 {
-                    mainTilemap.gameObject.SetActive(false);
-                    tempTilemap.gameObject.SetActive(false);
+                    setBuildMode(false);
                     invSlot[invSlot.Count - 1].RemoveFromStack(1);
                     rend.color = new Color(1f, 1f, 1f, 1f);
                     tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
-                    buildModeEnabled = false;
                     player.GetComponent<InventoryHolder>().InventorySystem.UpdateAllSlots();
                     tempBuilding.place();
                 }
@@ -125,9 +121,7 @@ public class GridBuildingSystem : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 clearArea();
-                mainTilemap.gameObject.SetActive(false);
-                tempTilemap.gameObject.SetActive(false);
-                buildModeEnabled = false;
+                setBuildMode(false);
                 Destroy(tempBuilding.gameObject);
                 tempBuilding = null;
             }
@@ -182,7 +176,7 @@ public class GridBuildingSystem : MonoBehaviour
         tempBuilding = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
         rend = tempBuilding.gameObject.GetComponentInChildren<SpriteRenderer>();
         rend.color = new Color(1f, 1f, 1f, ghostOpacity);
-        buildModeEnabled = true;
+        setBuildMode(true);
         followBuilding();
     }
 
@@ -249,6 +243,18 @@ public class GridBuildingSystem : MonoBehaviour
     }
 
     #endregion
+
+
+
+
+    private void setBuildMode(bool isBuildModeOn)
+    {
+        mainTilemap.gameObject.SetActive(isBuildModeOn);
+        tempTilemap.gameObject.SetActive(isBuildModeOn);
+        buildModeEnabled = isBuildModeOn;
+    }
+
+
 
     public enum TileType
     {
