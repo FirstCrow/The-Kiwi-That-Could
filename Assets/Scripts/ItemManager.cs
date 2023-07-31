@@ -16,9 +16,6 @@ public class ItemManager : MonoBehaviour
         foreach(var item in items)
         {
             ItemDictionary.Add(item.ID, item);
-            Debug.Log(item.ID, item);
         }
-
-        Debug.Log(ItemDictionary);
     }   
 }

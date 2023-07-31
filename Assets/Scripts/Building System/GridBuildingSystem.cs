@@ -38,9 +38,9 @@ public class GridBuildingSystem : MonoBehaviour
     public GameObject Castle;
     public GameObject Storage;
     public GameObject player;
-    public InventoryItemData AutoShopBlueprint;
-    public InventoryItemData CastleBlueprint;
-    public InventoryItemData StorageBlueprint;
+    private InventoryItemData AutoShopBlueprint;
+    private InventoryItemData CastleBlueprint;
+    private InventoryItemData StorageBlueprint;
 
 
 
@@ -53,6 +53,12 @@ public class GridBuildingSystem : MonoBehaviour
     }
     private void Start()
     {
+        AutoShopBlueprint = ItemManager.ItemDictionary[9];
+        Debug.Log(AutoShopBlueprint);
+
+
+
+
         buildModeEnabled = false;
     
         tileBases.Add(TileType.empty, null);
