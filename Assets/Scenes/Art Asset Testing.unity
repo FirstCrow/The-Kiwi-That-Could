@@ -2987,6 +2987,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1223636135579909693, guid: eaace1fb2d41d06468f0af6fd3fef9a1, type: 3}
   m_PrefabInstance: {fileID: 2016874959}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &893558880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 893558882}
+  - component: {fileID: 893558881}
+  m_Layer: 0
+  m_Name: Cursor Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &893558881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893558880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d247e852c0e84f4dbd09c23025bd4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 2bd51cb70a9a1264087296f6d0371505, type: 3}
+  cursorTextureDown: {fileID: 2800000, guid: ac43a7d820cc7814f9f944f14c85097b, type: 3}
+--- !u!4 &893558882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893558880}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &894754362 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1227825890983627073, guid: eaa6f98bac42a8a4d9f5589218aee3a3, type: 3}
@@ -140884,7 +140930,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dc9f9b1eb4dfcb94eb790f1116474bd4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2e33c6542b9b73d4ca68ea9adfd850f5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
