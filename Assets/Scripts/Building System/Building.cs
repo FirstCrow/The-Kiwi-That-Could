@@ -7,6 +7,7 @@ public class Building : MonoBehaviour
 {
     public bool placed;
     public BoundsInt area;
+    public InventoryItemData blueprint;
 
     void Start()
     {
@@ -16,6 +17,11 @@ public class Building : MonoBehaviour
     public bool getPlaced()
     {
         return placed;
+    }
+
+    public InventoryItemData getBlueprint()
+    {
+        return blueprint;
     }
 
     private void setPlaced(bool p)

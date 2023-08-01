@@ -133,3 +133,4 @@ MonoBehaviour:
   area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 3, y: 2, z: 1}
+  blueprint: {fileID: 11400000, guid: 2a745d9e265f2e14691a9fb1f339d525, type: 2}

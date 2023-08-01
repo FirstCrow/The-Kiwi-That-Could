@@ -151,7 +151,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.5
 --- !u!114 &7804718916766605641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,8 +166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickUpRadius: 1
   ItemData: {fileID: 11400000, guid: e94ac804417e6074db153e7464162d96, type: 2}
-  magnetStrength: 3
-  magnetAcceleration: 0.01
   pickupSound: {fileID: -2772012981123939704, guid: f859e4fa6ce383842b823099eec9ef4c, type: 3}
 --- !u!50 &1913612472
 Rigidbody2D:

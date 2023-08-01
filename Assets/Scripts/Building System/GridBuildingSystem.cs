@@ -27,6 +27,7 @@ public class GridBuildingSystem : MonoBehaviour
     private BoundsInt prevArea;
     private InventoryHolder playerInventory;
     private bool buildModeEnabled;
+    private List<InventorySlot> invSlot;
 
     public TileBase redTile;
     public TileBase greenTile;
@@ -38,9 +39,8 @@ public class GridBuildingSystem : MonoBehaviour
     public GameObject Castle;
     public GameObject Storage;
     public GameObject player;
-    private InventoryItemData AutoShopBlueprint;
-    private InventoryItemData CastleBlueprint;
-    private InventoryItemData StorageBlueprint;
+
+    
 
 
 
@@ -53,12 +53,6 @@ public class GridBuildingSystem : MonoBehaviour
     }
     private void Start()
     {
-        AutoShopBlueprint = ItemManager.ItemDictionary[9];
-        Debug.Log(AutoShopBlueprint);
-
-
-
-
         buildModeEnabled = false;
     
         tileBases.Add(TileType.empty, null);
@@ -69,30 +63,29 @@ public class GridBuildingSystem : MonoBehaviour
 
     private void Update()
     {
-        bool hasBlueprint = playerInventory.InventorySystem.ContainsItem(AutoShopBlueprint, out List<InventorySlot> invSlot);
 
-        if (!buildModeEnabled && !PauseMenu.getGameIsPaused() && hasBlueprint)
+        if (!buildModeEnabled && !PauseMenu.getGameIsPaused())
         {
             if(Input.GetKeyDown(KeyCode.Alpha1))
             {
-                Debug.Log("BuildModeEnabled");
                 initializeWithBuilding(AutoShop);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                Debug.Log("BuildModeEnabled");
                 initializeWithBuilding(Castle);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                Debug.Log("BuildModeEnabled");
                 initializeWithBuilding(Storage);
             }
 
 
         }
+
+
+
         if (tempBuilding == null)
         {
             return;
@@ -114,22 +107,14 @@ public class GridBuildingSystem : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (hasBlueprint && tempBuilding.canBePlaced())
+                if (tempBuilding.canBePlaced())
                 {
-                    setBuildMode(false);
-                    invSlot[invSlot.Count - 1].RemoveFromStack(1);
-                    rend.color = new Color(1f, 1f, 1f, 1f);
-                    tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
-                    player.GetComponent<InventoryHolder>().InventorySystem.UpdateAllSlots();
-                    tempBuilding.place();
+                    placeBuilding(cellPos);
                 }
             }
             if (Input.GetMouseButtonDown(1))
             {
-                clearArea();
-                setBuildMode(false);
-                Destroy(tempBuilding.gameObject);
-                tempBuilding = null;
+                cancelBuilding();
             }
         }
     }
@@ -179,6 +164,13 @@ public class GridBuildingSystem : MonoBehaviour
 
     public void initializeWithBuilding(GameObject building)
     {
+        var blueprint = building.GetComponent<Building>().getBlueprint();
+        bool hasBlueprint = playerInventory.InventorySystem.ContainsItem(blueprint, out List<InventorySlot> invSlot);
+
+        if(!hasBlueprint)
+            return;
+
+        this.invSlot = invSlot;
         tempBuilding = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
         rend = tempBuilding.gameObject.GetComponentInChildren<SpriteRenderer>();
         rend.color = new Color(1f, 1f, 1f, ghostOpacity);
@@ -250,9 +242,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     #endregion
 
-
-
-
+    #region Helper Methods
     private void setBuildMode(bool isBuildModeOn)
     {
         mainTilemap.gameObject.SetActive(isBuildModeOn);
@@ -260,6 +250,24 @@ public class GridBuildingSystem : MonoBehaviour
         buildModeEnabled = isBuildModeOn;
     }
 
+    private void placeBuilding(Vector3Int cellPos)
+    {
+        setBuildMode(false);
+        invSlot[invSlot.Count - 1].RemoveFromStack(1);
+        rend.color = new Color(1f, 1f, 1f, 1f);
+        tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
+        player.GetComponent<InventoryHolder>().InventorySystem.UpdateAllSlots();
+        tempBuilding.place();
+    }
+
+    private void cancelBuilding()
+    {
+        clearArea();
+        setBuildMode(false);
+        Destroy(tempBuilding.gameObject);
+        tempBuilding = null;
+    }
+    #endregion
 
 
     public enum TileType

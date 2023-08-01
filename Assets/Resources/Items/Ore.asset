@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34f58d85ca91a1489cbe74596f858a7, type: 3}
   m_Name: Ore
   m_EditorClassIdentifier: 
-  ID: 8
+  ID: 13
   DisplayName: 
   Description: 
   Icon: {fileID: 0}

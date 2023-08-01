@@ -11,6 +11,8 @@ public class ItemPickUps : MonoBehaviour
     private float magnetStrength = 0.1f;
     private float magnetAcceleration = 0.5f;
     private float maxMagnetStrength = 10f;
+    private float magnetRadius = 1.5f;
+    private float startingMagnetStrength;
     public AudioSource pickupSound;
 
     private CircleCollider2D myCollider;
@@ -19,17 +21,49 @@ public class ItemPickUps : MonoBehaviour
     private Vector3 targetPosition;
     private Rigidbody2D rb;
     private InventoryHolder targetInventory;
+    private bool waitingPickup;
+    private Collider2D tempCollider;
 
     private void Awake()
     {
         myCollider = GetComponent<CircleCollider2D>();
         myCollider.isTrigger = true;
         myCollider.radius = PickUpRadius;
+        startingMagnetStrength = magnetStrength;
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        var inventory = other.transform.GetComponent<InventoryHolder>();
+
+        if (!inventory) return;
+
+        waitingPickup = true;
+
+        if (inventory.InventorySystem.AddToInventory(ItemData, 1))
+        {
+            Instantiate(pickupSound);
+            Destroy(this.gameObject);
+        }
+    }
+
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        var inventory = other.transform.GetComponent<InventoryHolder>();
+
+        if (!inventory) return;
+
+        waitingPickup = false;
+        Debug.Log("Item Not Waiting for Pickup");
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (!waitingPickup) return;
+
+
         var inventory = other.transform.GetComponent<InventoryHolder>();
 
         if (!inventory) return;
@@ -43,7 +77,12 @@ public class ItemPickUps : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hasTarget && targetInventory.InventorySystem.CheckAddToInventory(ItemData))
+
+        if (!hasTarget)
+            return;
+
+        bool inventoryHasSpace = targetInventory.InventorySystem.CheckAddToInventory(ItemData);
+        if (inventoryHasSpace)
         {
             Vector2 targetDirection = (targetPosition - transform.position).normalized;
             rb.velocity = new Vector2(targetDirection.x, targetDirection.y) * magnetStrength;
@@ -51,17 +90,25 @@ public class ItemPickUps : MonoBehaviour
             {
                 magnetStrength += magnetAcceleration;
             }
+            return;
             
         }
         else
         {
+            
+            hasTarget = false;
+            targetInventory = null;
+            targetPosition = Vector3.zero;
             rb.velocity = Vector2.zero;
+            magnetStrength = startingMagnetStrength;
+            return;
         }
     }
     public void SetTarget(Transform target)
     {
         targetInventory = target.GetComponent<InventoryHolder>();
-        targetPosition = target.position;
+        targetPosition = target.GetComponent<BoxCollider2D>().bounds.center;
+
         hasTarget = true;
     }
 }
