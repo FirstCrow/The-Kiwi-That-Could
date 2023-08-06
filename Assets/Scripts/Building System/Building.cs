@@ -8,6 +8,7 @@ public class Building : MonoBehaviour
     public bool placed;
     public BoundsInt area;
     public InventoryItemData blueprint;
+    public string type;                     // List of types: "building", "path" (changes what color of tile occupies the building square)
 
     void Start()
     {
@@ -50,7 +51,7 @@ public class Building : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
         placed = true;
-        GridBuildingSystem.current.takeArea(areaTemp);
+        GridBuildingSystem.current.takeArea(areaTemp, type);
     }
 
     #endregion 
