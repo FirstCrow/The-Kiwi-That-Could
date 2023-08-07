@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1574715451514888362}
-  - component: {fileID: 1574715451514888361}
+  - component: {fileID: -6408255640705736093}
   m_Layer: 0
   m_Name: Path
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1574715451514888361
+--- !u!114 &-6408255640705736093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1574715451514888363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27bd8935b2e0927428e75cd260dc81b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f6307735eaa7974aac841e4f151e009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   placed: 0
@@ -124,12 +124,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 776627444, guid: 46f920b001e390047b7902e66209d9b8, type: 3}
+  m_Sprite: {fileID: 776627444, guid: 188d51055b2381142a31e9b03b19d429, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.11, y: 5.1109996}
+  m_Size: {x: 1.8925927, y: 1.8929628}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

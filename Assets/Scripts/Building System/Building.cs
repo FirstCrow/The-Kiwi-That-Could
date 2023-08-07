@@ -54,5 +54,10 @@ public class Building : MonoBehaviour
         GridBuildingSystem.current.takeArea(areaTemp, type);
     }
 
+    public void setSprite()
+    {
+
+    }
+
     #endregion 
 }

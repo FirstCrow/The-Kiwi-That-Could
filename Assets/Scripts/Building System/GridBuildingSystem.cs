@@ -10,11 +10,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 using UnityEngine.WSA;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 // This script is the main logic of the grid building system
 public class GridBuildingSystem : MonoBehaviour
 {
     public static GridBuildingSystem current;
+    public Dictionary<Vector3Int, Building> BuildingDictionary;
 
     public GridLayout gridLayout;
     public Tilemap mainTilemap;
@@ -35,6 +37,7 @@ public class GridBuildingSystem : MonoBehaviour
     public TileBase greenTile;
     public TileBase whiteTile;
     public TileBase yellowTile;
+    
 
     [Header("TEMP VARIBLES")]
 
@@ -54,6 +57,7 @@ public class GridBuildingSystem : MonoBehaviour
     {
         current = this;
         playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryHolder>();
+        BuildingDictionary = new Dictionary<Vector3Int, Building>();
     }
     private void Start()
     {
@@ -153,7 +157,6 @@ public class GridBuildingSystem : MonoBehaviour
     {
         TileBase[] array = new TileBase[4];
         int counter = 0;
-        Debug.Log(tileCoordinates);
         
         while(counter < 4)
         {
@@ -275,9 +278,9 @@ public class GridBuildingSystem : MonoBehaviour
         return true;
     }
 
-    public List<bool> checkAdjacent(out int numAdjacent)
+    public List<bool> checkAdjacent(Vector3Int position, out int numAdjacent)
     {
-        TileBase[] baseArray = getTilesBlockPath(tempBuilding.area.position, mainTilemap);              
+        TileBase[] baseArray = getTilesBlockPath(position, mainTilemap);              
         List<bool> directions = new List<bool>();
         numAdjacent = 0;                                                                      // Direction Key:
         foreach (var b in baseArray)                                                          // 1st element: up right
@@ -290,11 +293,6 @@ public class GridBuildingSystem : MonoBehaviour
             else
                 directions.Add(false);
         }
-
-        foreach(var b in directions)
-        {
-            Debug.Log(b);
-        }
         return directions;                                  // If the element in coordinates is true, that tile is yellow (occupied by a path)
     }
 
@@ -304,135 +302,7 @@ public class GridBuildingSystem : MonoBehaviour
         {
             setTilesBlock(area, TileType.empty, tempTilemap);
             setTilesBlock(area, TileType.yellow, mainTilemap);
-            List<bool> directions = checkAdjacent(out int numAdjacent);
-
-            if (numAdjacent == 0)
-            {
-                return;
-            }
-
-            else if(numAdjacent == 1)
-            {
-                // Check for which direction it is and change texture
-                int counter = 0;
-                foreach(var v in directions)
-                {
-                    if (v == true)
-                        break;
-                    counter++;
-                }
-
-
-                switch(counter)
-                {
-                    case 0:
-                        //Change to up right texture
-                        break;
-
-                    case 1:
-                        //Change to up left texture
-                        break;
-
-                    case 2:
-                        //Change to down left texture
-                        break;
-
-                    case 3:
-                        //Change to down right texture
-                        break;
-                }
-
-
-            }
-
-            else if (numAdjacent == 2)
-            {
-                // Check for which 2 directions and change texture
-                Vector2Int direction = new Vector2Int();
-
-                for (int i = 0; i < directions.Count; i++)
-                {
-                    if (directions[i] == true)
-                    {
-                        direction = new Vector2Int(i, 0);
-                        break;
-                    }
-                }
-
-                for (int i = directions.Count - 1; i >= 0; i--)
-                {
-                    if (directions[i] == true)
-                    {
-                        direction = new Vector2Int(direction.x, i);
-                        break;
-                    }
-                }
-
-                if(direction.Equals(new Vector2Int(0,1)))
-                {
-                    //Change to upwards facing corner
-                }
-                else if (direction.Equals(new Vector2Int(1, 2)))
-                {
-                    //Change to leftwards facing corner
-                }
-                else if (direction.Equals(new Vector2Int(2, 3)))
-                {
-                    //Change to downwards facing corner
-                }
-                else if (direction.Equals(new Vector2Int(0, 3)))
-                {
-                    //Change to rightward facing corner
-                }
-                else if (direction.Equals(new Vector2Int(0, 2)))
-                {
-                    //Change to "/" path
-                }
-                else if (direction.Equals(new Vector2Int(1, 3)))
-                {
-                    //Change to "\" path
-                }
-
-            }
-
-            else if (numAdjacent == 3)
-            {
-                int counter = 0;
-                foreach (var v in directions)
-                {
-                    if (v == false)
-                        break;
-                    counter++;
-                }
-
-
-                switch (counter)
-                {
-                    case 0:
-                        //Change to missing up right crossroad texture
-                        break;
-
-                    case 1:
-                        //Change to missing up left crossroad texture
-                        break;
-
-                    case 2:
-                        //Change to missing down left crossroad texture
-                        break;
-
-                    case 3:
-                        //Change to missing down right crossroad texture
-                        break;
-                }
-            }
-
-            else if (numAdjacent == 4)
-            {
-                // Change texture to crossroad
-            }
-
-
-
+            updatePathSprite(tempBuilding.area.position, true);
         }
         else
         {
@@ -458,6 +328,7 @@ public class GridBuildingSystem : MonoBehaviour
         rend.color = new Color(1f, 1f, 1f, 1f);
         tempBuilding.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos + new Vector3(.5f, .5f, 0f));
         player.GetComponent<InventoryHolder>().InventorySystem.UpdateAllSlots();
+        BuildingDictionary.Add(tempBuilding.area.position, tempBuilding);
         tempBuilding.place();
     }
 
@@ -467,6 +338,285 @@ public class GridBuildingSystem : MonoBehaviour
         setBuildMode(false);
         Destroy(tempBuilding.gameObject);
         tempBuilding = null;
+    }
+
+
+    private void updatePathSprite(Vector3Int position, bool updateAdjacent)
+    {
+        List<bool> directions = checkAdjacent(position, out int numAdjacent);
+
+        if (numAdjacent == 0)
+        {
+            return;
+        }
+
+        Building buildingToUpdate;
+        BuildingDictionary.TryGetValue(position, out buildingToUpdate);
+        Vector3Int tempPosition = position;
+
+        if (numAdjacent == 1)
+        {
+            // Check for which direction it is and change texture
+            int counter = 0;
+            foreach (var v in directions)
+            {
+                if (v == true)
+                    break;
+                counter++;
+            }
+
+
+            switch (counter)
+            {
+                case 0:
+                    //Change to up right texture
+                    buildingToUpdate.GetComponent<Path>().setSprite(14);
+                    if (updateAdjacent)
+                    {
+                        tempPosition.x += 1;
+                        updatePathSprite(tempPosition, false);
+                    }
+                    break;
+
+                case 1:
+                    //Change to up left texture
+                    buildingToUpdate.GetComponent<Path>().setSprite(13);
+                    if (updateAdjacent)
+                    {
+                        tempPosition.y += 1;
+                        updatePathSprite(tempPosition, false);
+                    }
+                    break;
+
+                case 2:
+                    //Change to down left texture
+                    buildingToUpdate.GetComponent<Path>().setSprite(11);
+                    if (updateAdjacent)
+                    {
+                        tempPosition.x -= 1;
+                        updatePathSprite(tempPosition, false);
+                    }
+                    break;
+
+                case 3:
+                    //Change to down right texture
+                    buildingToUpdate.GetComponent<Path>().setSprite(12);
+                    if (updateAdjacent)
+                    {
+                        tempPosition.y -= 1;
+                        updatePathSprite(tempPosition, false);
+                    }
+                    break;
+            }
+
+
+        }
+
+        else if (numAdjacent == 2)
+        {
+            // Check for which 2 directions and change texture
+            Vector2Int direction = new Vector2Int();
+
+            for (int i = 0; i < directions.Count; i++)
+            {
+                if (directions[i] == true)
+                {
+                    direction = new Vector2Int(i, 0);
+                    break;
+                }
+            }
+
+            for (int i = directions.Count - 1; i >= 0; i--)
+            {
+                if (directions[i] == true)
+                {
+                    direction = new Vector2Int(direction.x, i);
+                    break;
+                }
+            }
+
+            if (direction.Equals(new Vector2Int(0, 1)))
+            {
+                //Change to upwards facing corner
+                buildingToUpdate.GetComponent<Path>().setSprite(4);
+                if (updateAdjacent)
+                {
+                    tempPosition.x += 1;
+                    updatePathSprite(tempPosition, false);
+                    tempPosition = position;
+                    tempPosition.y += 1;
+                    updatePathSprite(tempPosition, false);
+                }
+            }
+            else if (direction.Equals(new Vector2Int(1, 2)))
+            {
+                //Change to leftwards facing corner
+                buildingToUpdate.GetComponent<Path>().setSprite(2);
+                if (updateAdjacent)
+                {
+                    tempPosition.y += 1;
+                    updatePathSprite(tempPosition, false);
+                    tempPosition = position;
+                    tempPosition.x -= 1;
+                    updatePathSprite(tempPosition, false);
+                }
+            }
+            else if (direction.Equals(new Vector2Int(2, 3)))
+            {
+                //Change to downwards facing corner
+                buildingToUpdate.GetComponent<Path>().setSprite(5);
+                if (updateAdjacent)
+                {
+                    tempPosition.x -= 1;
+                    updatePathSprite(tempPosition, false);
+                    tempPosition = position;
+                    tempPosition.y -= 1;
+                    updatePathSprite(tempPosition, false);
+                }
+            }
+            else if (direction.Equals(new Vector2Int(0, 3)))
+            {
+                //Change to rightward facing corner
+                buildingToUpdate.GetComponent<Path>().setSprite(3);
+                if (updateAdjacent)
+                {
+                    tempPosition.y -= 1;
+                    updatePathSprite(tempPosition, false);
+                    tempPosition = position;
+                    tempPosition.x += 1;
+                    updatePathSprite(tempPosition, false);
+                }
+            }
+            else if (direction.Equals(new Vector2Int(0, 2)))
+            {
+                //Change to "/" path
+                buildingToUpdate.GetComponent<Path>().setSprite(0);
+                if (updateAdjacent)
+                {
+                    tempPosition.x += 1;
+                    updatePathSprite(tempPosition, false);
+                    tempPosition = position;
+                    tempPosition.x -= 1;
+                    updatePathSprite(tempPosition, false);
+                }
+            }
+            else if (direction.Equals(new Vector2Int(1, 3)))
+            {
+                //Change to "\" path
+                buildingToUpdate.GetComponent<Path>().setSprite(1);
+                if (updateAdjacent)
+                {
+                    tempPosition.y += 1;
+                    updatePathSprite(tempPosition, false);
+                    tempPosition = position;
+                    tempPosition.y -= 1;
+                    updatePathSprite(tempPosition, false);
+                }
+            }
+
+        }
+
+        else if (numAdjacent == 3)
+        {
+            int counter = 0;
+            foreach (var v in directions)
+            {
+                if (v == false)
+                    break;
+                counter++;
+            }
+
+
+            switch (counter)
+            {
+                case 0:
+                    //Change to missing up right crossroad texture
+                    buildingToUpdate.GetComponent<Path>().setSprite(7);
+                    if (updateAdjacent)
+                    {
+                        tempPosition.y += 1;
+                        updatePathSprite(tempPosition, false);
+                        tempPosition = position;
+                        tempPosition.x -= 1;
+                        updatePathSprite(tempPosition, false);
+                        tempPosition = position;
+                        tempPosition.y -= 1;
+                        updatePathSprite(tempPosition, false);
+                    }
+                    break;
+
+                case 1:
+                    //Change to missing up left crossroad texture
+                    buildingToUpdate.GetComponent<Path>().setSprite(8);
+                    if (updateAdjacent)
+                    {
+                        tempPosition.x += 1;
+                        updatePathSprite(tempPosition, false);
+                        tempPosition = position;
+                        tempPosition.x -= 1;
+                        updatePathSprite(tempPosition, false);
+                        tempPosition = position;
+                        tempPosition.y -= 1;
+                        updatePathSprite(tempPosition, false);
+                    }
+                    break;
+
+                case 2:
+                    //Change to missing down left crossroad texture
+                    buildingToUpdate.GetComponent<Path>().setSprite(10);
+                    if (updateAdjacent)
+                    {
+                        tempPosition.x += 1;
+                        updatePathSprite(tempPosition, false);
+                        tempPosition = position;
+                        tempPosition.y += 1;
+                        updatePathSprite(tempPosition, false);
+                        tempPosition = position;
+                        tempPosition.y -= 1;
+                        updatePathSprite(tempPosition, false);
+                    }
+                    break;
+
+                case 3:
+                    //Change to missing down right crossroad texture
+                    buildingToUpdate.GetComponent<Path>().setSprite(9);
+                    if (updateAdjacent)
+                    {
+                        tempPosition.x += 1;
+                        updatePathSprite(tempPosition, false);
+                        tempPosition = position;
+                        tempPosition.y += 1;
+                        updatePathSprite(tempPosition, false);
+                        tempPosition = position;
+                        tempPosition.x -= 1;
+                        updatePathSprite(tempPosition, false);
+                    }
+                    break;
+            }
+        }
+
+        else if (numAdjacent == 4)
+        {
+            // Change texture to crossroad
+            buildingToUpdate.GetComponent<Path>().setSprite(6);
+            if (updateAdjacent)
+            {
+                tempPosition.x += 1;
+                updatePathSprite(tempPosition, false);
+                tempPosition = position;
+                tempPosition.y += 1;
+                updatePathSprite(tempPosition, false);
+                tempPosition = position;
+                tempPosition.x -= 1;
+                updatePathSprite(tempPosition, false);
+                tempPosition = position;
+                tempPosition.y -= 1;
+                updatePathSprite(tempPosition, false);
+            }
+        }
+
+
+
     }
     #endregion
 
