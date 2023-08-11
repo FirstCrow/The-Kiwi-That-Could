@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6212046209203031759}
   - component: {fileID: 2548167172570435128}
   - component: {fileID: 1763101788}
+  - component: {fileID: 7359845013158478302}
   m_Layer: 0
   m_Name: Unplanted Crop
   m_TagString: Untagged
@@ -110,7 +111,23 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.25}
-      - {x: -0.5, y: 0}
-      - {x: 0, y: -0.25}
-      - {x: 0.5, y: 0}
+    - - {x: -0.028779149, y: 0.4658432}
+      - {x: -0.90290713, y: 0.01918602}
+      - {x: -0.023982525, y: -0.40828514}
+      - {x: 0.8885176, y: 0.02877903}
+--- !u!114 &7359845013158478302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003370876104920870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b72ae45dce721e4899f09563765bf03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantedCrop: {fileID: 0}
+  outOfRangeColor: {r: 1, g: 1, b: 1, a: 1}
+  inRangeColor: {r: 0, g: 0, b: 0, a: 0}
+  playerHotbar: {fileID: 0}

@@ -4,9 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-// This script controlls the player behaviour while in the village scene
+// This script controls the player behaviour while in the village scene
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     [Header("Player Varibles")]
     public float speed;
     public float cropRange;
@@ -20,6 +22,11 @@ public class PlayerController : MonoBehaviour
     public GameObject backSprite;
 
 
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {

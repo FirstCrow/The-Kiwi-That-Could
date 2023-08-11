@@ -56,7 +56,6 @@ public class ItemPickUps : MonoBehaviour
         if (!inventory) return;
 
         waitingPickup = false;
-        Debug.Log("Item Not Waiting for Pickup");
     }
 
     private void OnTriggerStay2D(Collider2D other)

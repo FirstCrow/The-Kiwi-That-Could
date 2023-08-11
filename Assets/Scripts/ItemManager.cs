@@ -6,7 +6,7 @@ using static UnityEditor.Progress;
 // This script creates a dictonary of all items using the resources folder.
 public class ItemManager : MonoBehaviour
 {
-    public static Dictionary<int, InventoryItemData> ItemDictionary;
+    public Dictionary<int, InventoryItemData> ItemDictionary;
     public static ItemManager instance;
     private void Start()
     {

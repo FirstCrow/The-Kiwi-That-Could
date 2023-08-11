@@ -29,11 +29,14 @@ public class UnplantedCropScript : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerRange = FindObjectOfType<PlayerController>().GetCropRange();
+        player = PlayerController.instance.GameObject();
+        playerRange = PlayerController.instance.GetCropRange();
         rend = GetComponent<SpriteRenderer>();
         originalColor = rend.color;
         playerInventory = player.GetComponent<InventoryHolder>();
+        ItemManager.instance.ItemDictionary.TryGetValue(1, out InventoryItemData tempKiwiSeedData);
+        kiwiSeedData = tempKiwiSeedData;
+        
     }
  
     private void OnMouseOver()
