@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5188361816072592607}
   - component: {fileID: -2772012981123939704}
+  - component: {fileID: 8775085511503737548}
   m_Layer: 0
   m_Name: ItemPickup
   m_TagString: Untagged
@@ -128,3 +129,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8775085511503737548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844793068783608015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8757c98a7a845464d81403a25a0f4d61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 1

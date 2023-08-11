@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7804718915956281480}
   - component: {fileID: 7804718915956281483}
   - component: {fileID: 818146140780814578}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 7804718916766605640}
   - component: {fileID: 7804718916766605641}
   - component: {fileID: 1971256079}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Kumara Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,8 +166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickUpRadius: 1
   ItemData: {fileID: 11400000, guid: 5465fe0b33fc31644b51aab49c271835, type: 2}
-  magnetStrength: 3
-  magnetAcceleration: 0.01
   pickupSound: {fileID: -2772012981123939704, guid: f859e4fa6ce383842b823099eec9ef4c, type: 3}
 --- !u!50 &1971256079
 Rigidbody2D:

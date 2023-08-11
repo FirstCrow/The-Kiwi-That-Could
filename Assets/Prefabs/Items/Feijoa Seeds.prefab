@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1223636135579909692}
   - component: {fileID: 1223636135579909695}
   - component: {fileID: 6106266205018102730}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Feijoa Seeds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,8 +65,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickUpRadius: 1
   ItemData: {fileID: 11400000, guid: cbc36aa8de6c582459d583dcdbab3cda, type: 2}
-  magnetStrength: 3
-  magnetAcceleration: 0.01
   pickupSound: {fileID: -2772012981123939704, guid: f859e4fa6ce383842b823099eec9ef4c, type: 3}
 --- !u!50 &6106266205018102730
 Rigidbody2D:
@@ -100,7 +98,7 @@ GameObject:
   - component: {fileID: 1223636136291130367}
   - component: {fileID: 1223636136291130366}
   - component: {fileID: 1538100165082124993}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

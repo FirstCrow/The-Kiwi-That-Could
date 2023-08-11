@@ -3,7 +3,12 @@ guid: 88c86213226e5364587a3bb13bb79c07
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - graphics: {instanceID: 0}
+  - KiwiFruit: {fileID: 1227825890983627075, guid: eaa6f98bac42a8a4d9f5589218aee3a3, type: 3}
+  - KiwiSeeds: {fileID: 1227825890983627075, guid: 1b3755646fbdb6b4e8a258cf935a7394, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

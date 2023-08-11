@@ -8,7 +8,7 @@ public class ItemManager : MonoBehaviour
 {
     public Dictionary<int, InventoryItemData> ItemDictionary;
     public static ItemManager instance;
-    private void Start()
+    private void Awake()
     {
         instance = this;
         ItemDictionary = new Dictionary<int, InventoryItemData>();

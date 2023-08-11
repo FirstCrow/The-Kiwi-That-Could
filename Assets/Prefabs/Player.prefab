@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 598873407}
   - component: {fileID: 598873408}
   - component: {fileID: 598873409}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MagnetCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 39992806158063501}
   - component: {fileID: 1418808708}
   - component: {fileID: 1418318432}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  cropRange: 1
+  cropRange: 100
   graphics: {fileID: 1285068461960787055}
   frontSprite: {fileID: 2682144136751091486}
   backSprite: {fileID: 5347054798330328790}

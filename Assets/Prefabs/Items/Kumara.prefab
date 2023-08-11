@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7804718915956281480}
   - component: {fileID: 7804718915956281483}
   - component: {fileID: 6735576887430338264}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 7804718916766605640}
   - component: {fileID: 7804718916766605641}
   - component: {fileID: 1913612472}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Kumara
   m_TagString: Untagged
   m_Icon: {fileID: 0}

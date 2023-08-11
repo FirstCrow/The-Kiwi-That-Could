@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1227825890983627087}
   - component: {fileID: 1227825890983627072}
   - component: {fileID: 119587066319270946}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Storage Blueprint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 5597648077277290670}
   - component: {fileID: 1983426423790086666}
   - component: {fileID: 5168491640077732316}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b72ae45dce721e4899f09563765bf03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantedCrop: {fileID: 0}
+  plantedCrop: {fileID: 1003370876104920870, guid: 277d2e53b159c8d489859570f47fdda0, type: 3}
   outOfRangeColor: {r: 1, g: 1, b: 1, a: 1}
-  inRangeColor: {r: 0, g: 0, b: 0, a: 0}
+  inRangeColor: {r: 0.5566038, g: 0, b: 0, a: 1}
   playerHotbar: {fileID: 0}

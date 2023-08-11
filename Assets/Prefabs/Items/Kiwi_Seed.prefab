@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1227825890983627087}
   - component: {fileID: 1227825890983627072}
   - component: {fileID: 5223669546527672737}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Kiwi_Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,8 +65,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickUpRadius: 1
   ItemData: {fileID: 11400000, guid: c7f63845823e85343995afff5cf17574, type: 2}
-  magnetStrength: 3
-  magnetAcceleration: 0.01
   pickupSound: {fileID: -2772012981123939704, guid: f859e4fa6ce383842b823099eec9ef4c, type: 3}
 --- !u!50 &5223669546527672737
 Rigidbody2D:
@@ -100,7 +98,7 @@ GameObject:
   - component: {fileID: 5597648077277290670}
   - component: {fileID: 1983426423790086666}
   - component: {fileID: 1336933452174986282}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +160,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 9fbbb4daddf0b3440ae2bbb56d7081c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

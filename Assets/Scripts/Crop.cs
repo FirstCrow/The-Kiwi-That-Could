@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 // Can be inherited by all crop types
@@ -8,11 +9,11 @@ using UnityEngine;
 public class Crop : MonoBehaviour
 {
     [Header("Crop Varibles")]
-    
-    public float daysPerStage;           //How many days each crop stage will take
+
+    public float hoursPerStage;           //How many days each crop stage will take
     public float numCropStages;          //How many crop stages this crop has (the final crop stage is when it is harvestable)
-    private int cropStage;               //Used for the animator to display crop sprites
-    private float stageDaysElapsed;      //How many days have passed this crop stage
+    public int cropStage;               //Used for the animator to display crop sprites
+    private float stageHoursElapsed;      //How many days have passed this crop stage
     private bool harvestable;            //is the crop harvestable
 
     [Header("Player Varibles")]
@@ -28,16 +29,21 @@ public class Crop : MonoBehaviour
     public Animator animator;      //Used to change crop sprite/animation depending on crop stage
     public GameObject graphics;
 
+    [Header("TEMP")]
+    public GameObject KiwiFruit;
+    public GameObject KiwiSeeds;
+
     private void Start()
     {
 
         // Initializes crop and player varibles
         playerRange = player.GetComponent<PlayerController>().GetCropRange();
         cropStage = 1;
-        stageDaysElapsed = 0;
+        stageHoursElapsed = 0;
         harvestable = false;
-        DayNightScript.current.onNewDay += cropNewDay;
+        DayNightScript.current.onNewHour += cropNewHour;
 
+        Debug.Log(numCropStages);
         /* Gets original color
         rend = GetComponent<SpriteRenderer>();
         originalColor = rend.color;*/
@@ -45,10 +51,10 @@ public class Crop : MonoBehaviour
 
     // Called whenever it is a new day via event in DayNightScript
     // Logic for how long each crop stage is
-    public void cropNewDay()
+    public void cropNewHour()
     {
-        stageDaysElapsed++;
-        if(stageDaysElapsed >= daysPerStage)
+        stageHoursElapsed++;
+        if (stageHoursElapsed >= hoursPerStage)
         {
             updateCropState();
         }
@@ -57,46 +63,34 @@ public class Crop : MonoBehaviour
     // Called when the crop stage needs to be incremented
     public void updateCropState()
     {
-        stageDaysElapsed = 0;
+        stageHoursElapsed = 0;
         cropStage++;
-        graphics.transform.GetChild(cropStage - 2).gameObject.SetActive(false);
-        graphics.transform.GetChild(cropStage - 1).gameObject.SetActive(true); ;
-       
+        Debug.Log(cropStage);
 
         // If the crop is fully grown it is harvestable
         if (cropStage >= numCropStages)
         {
             harvestable = true;
-            Debug.Log("Plant ready to harvest!");
+            GetComponentInParent<UnplantedCropScript>().setHarvestable(true);
         }
-    }
-
-    private void harvestCrop()
-    {
-
-    }
-
-    private void OnMouseOver()
-    {
-        float distanceFromPlant = Mathf.Abs((transform.position - player.transform.position).magnitude);
-        if (!PauseMenu.getGameIsPaused())
+        if (cropStage <= numCropStages)
         {
-            if (distanceFromPlant <= playerRange && harvestable)
-            {
-                if (Input.GetMouseButton(0))
-                {
-                    harvestCrop();
-                }
-                //rend.color = inRangeColor;
-            }
-            //else
-               //rend.color = outOfRangeColor;
+            Debug.Log("Change Graphics");
+            graphics.transform.GetChild(cropStage - 2).gameObject.SetActive(false);
+            graphics.transform.GetChild(cropStage - 1).gameObject.SetActive(true);
         }
     }
 
-    private void OnMouseExit()
+    public void harvestCrop()
     {
-        //rend.color = originalColor;
-    }
 
+        DayNightScript.current.onNewHour -= cropNewHour;
+        Instantiate(KiwiFruit, transform.position, transform.rotation);
+        for(int i = 0; i <= Mathf.RoundToInt(UnityEngine.Random.Range(0,3)); i++)
+        {
+            Instantiate(KiwiSeeds, transform.position, transform.rotation);
+        }
+        Destroy(gameObject);
+        Destroy(this);
+    }
 }

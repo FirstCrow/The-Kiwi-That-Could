@@ -25,6 +25,17 @@ public class PauseMenu : MonoBehaviour
             else
                 Pause();
         }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Time.timeScale = 100f;
+        }
+
+
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     // Resumes the game

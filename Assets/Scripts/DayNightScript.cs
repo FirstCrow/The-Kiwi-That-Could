@@ -16,6 +16,7 @@ public class DayNightScript : MonoBehaviour
     public bool TimerOn = false;
     private bool isPm = false;
     private float TimeElapsed;      // 1 hour is 1 minute in real life
+    private float previousHour;
     private static float hour;
     private static float day;
 
@@ -58,13 +59,18 @@ public class DayNightScript : MonoBehaviour
 
         hour = Mathf.FloorToInt(currentTime / 60);
 
+        if (hour != previousHour)
+        {
+            previousHour = hour;
+            newHour();
+        }
+
         if (hour > 23)
         {
             hour = hour % 24;                                   // Resets clock if it is past midnight and changes day
             TimeElapsed = 0;
             day++;
             isPm = false;                                       // Changes time to AM
-            newDay();                                           // Calls New Day event to let all scripts that are subscribed know it is a new day
         }
 
         if (hour > 11 && !isPm)                                 // Changes time to PM if needed
@@ -98,12 +104,12 @@ public class DayNightScript : MonoBehaviour
         return day;
     }
 
-    public event Action onNewDay;
-    public void newDay()
+    public event Action onNewHour;
+    public void newHour()
     {
-        if(onNewDay != null)
+        if(onNewHour != null)
         {
-            onNewDay();
+            onNewHour();
         }
     }
     
