@@ -128,8 +128,8 @@ GameObject:
   - component: {fileID: 4454723264768702414}
   - component: {fileID: 4454723264768702403}
   - component: {fileID: 39992806158063501}
-  - component: {fileID: 1418808708}
   - component: {fileID: 1418318432}
+  - component: {fileID: 2076475545}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -218,21 +218,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3692913, y: 0.3232937}
   m_EdgeRadius: 0
---- !u!114 &1418808708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4454723264768702415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8ddbfa15eef48843a65b0ccf91bdfe9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventorySize: 8
-  inventorySystem:
-    inventorySlots: []
 --- !u!210 &1418318432
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -244,6 +229,21 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
+--- !u!114 &2076475545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454723264768702415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1afd8889ed4b084a8fa088585b950cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySize: 8
+  inventorySystem:
+    inventorySlots: []
 --- !u!1001 &2512775763806957219
 PrefabInstance:
   m_ObjectHideFlags: 0

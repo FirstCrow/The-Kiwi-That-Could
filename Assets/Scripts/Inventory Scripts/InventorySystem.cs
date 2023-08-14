@@ -67,6 +67,28 @@ public class InventorySystem
         }
         return false;
     }
+
+    public void RemoveFromInventory(InventoryItemData itemToRemove, int amountToRemove)
+    {
+
+        if (ContainsItem(itemToRemove, out List<InventorySlot> invSlot)) // Check whether item exists in inventory.
+        {
+            foreach (var slot in invSlot)
+            {
+                if (slot.StackSize <= amountToRemove)
+                {
+                    slot.RemoveFromStack(slot.StackSize);
+                    OnInventorySlotChanged?.Invoke(slot);
+                    amountToRemove -= slot.StackSize;
+                }
+                else
+                {
+                    slot.RemoveFromStack(amountToRemove);
+                    return;
+                }
+            }
+        }
+    }
     public bool ContainsItem(InventoryItemData itemToAdd, out List<InventorySlot> invSlot)
     {
         invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();
@@ -78,6 +100,25 @@ public class InventorySystem
             }
         }
         return false;
+    }
+
+    public int ContainsNumberOfItem(InventoryItemData itemToAdd, out List<InventorySlot> invSlot)
+    {
+        invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();
+        int numberOfItem = 0;
+        foreach (var slot in invSlot)
+        {
+            if (slot.ItemData != null)
+            {
+                continue;
+            }
+
+            numberOfItem += slot.StackSize;
+        }
+
+        return numberOfItem;
+
+        
     }
 
     public bool HasFreeSlot(out InventorySlot freeSlot)
