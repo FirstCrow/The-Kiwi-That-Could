@@ -196,10 +196,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 586401114}
     m_Modifications:
-    - target: {fileID: 2076475545, guid: e4af86f423597b0469a708feedf9551b, type: 3}
-      propertyPath: inventorySystem.inventorySlots.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4454723264768702400, guid: e4af86f423597b0469a708feedf9551b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -388,6 +384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 65300518}
   - component: {fileID: 65300519}
+  - component: {fileID: 65300520}
   m_Layer: 0
   m_Name: Randall
   m_TagString: Untagged
@@ -431,6 +428,37 @@ MonoBehaviour:
     dialogueText: {fileID: 0}
     nameText: {fileID: 0}
     sentences: []
+  shopUI: {fileID: 409514140}
+--- !u!60 &65300520
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65300517}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.039797306, y: 0.9602027}
+      - {x: -2.0653849, y: -0.0889574}
+      - {x: -1.091886, y: -0.6100298}
+      - {x: -0.0091763735, y: -1.1539283}
+      - {x: 1.9725242, y: -0.11548895}
 --- !u!1 &123179343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,7 +1241,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 347996462}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 347996464}
+        m_TargetAssemblyTypeName: ShopOffer, Assembly-CSharp
+        m_MethodName: purchaseOffer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &347996462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,8 +1304,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b219c96ab49dc44fbc34964cb7b3b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costItems: []
-  priceItems: []
+  costItems:
+  - item: {fileID: 11400000, guid: 734ee4193a4971c4d8b6b5f24a42730f, type: 2}
+    amount: 15
+  priceItems:
+  - item: {fileID: 11400000, guid: 9a55bfcc5cebf784ebf3f01f8c4477cd, type: 2}
+    amount: 1
 --- !u!4 &352049874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6212046209203031759, guid: 360e89bf48c64b942be660490f90f5b0, type: 3}
@@ -2127,6 +2171,7 @@ MonoBehaviour:
     dialogueText: {fileID: 0}
     nameText: {fileID: 0}
     sentences: []
+  shopUI: {fileID: 0}
 --- !u!4 &414885983 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 572ab387cfd5ce347bd1c5a9577451a8, type: 3}
@@ -34766,7 +34811,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1338914624}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1338914626}
+        m_TargetAssemblyTypeName: ShopOffer, Assembly-CSharp
+        m_MethodName: purchaseOffer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1338914624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34817,8 +34874,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b219c96ab49dc44fbc34964cb7b3b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costItems: []
-  priceItems: []
+  costItems:
+  - item: {fileID: 11400000, guid: 734ee4193a4971c4d8b6b5f24a42730f, type: 2}
+    amount: 10
+  priceItems:
+  - item: {fileID: 11400000, guid: 8a8c75150e8014349a0f00fd1b2332c3, type: 2}
+    amount: 1
 --- !u!1001 &1352011635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34945,7 +35006,7 @@ PrefabInstance:
     - target: {fileID: 1325591843662647689, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
       propertyPath: inventoryHolder
       value: 
-      objectReference: {fileID: 2076475545}
+      objectReference: {fileID: 2076475550}
     - target: {fileID: 1325591843662647689, guid: 000d35c0ee66f4c47bd046502b8e2484, type: 3}
       propertyPath: mouseInventoryItem
       value: 
@@ -35191,7 +35252,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1356603216}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1356603218}
+        m_TargetAssemblyTypeName: ShopOffer, Assembly-CSharp
+        m_MethodName: purchaseOffer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1356603216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35242,8 +35315,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b219c96ab49dc44fbc34964cb7b3b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costItems: []
-  priceItems: []
+  costItems:
+  - item: {fileID: 11400000, guid: 734ee4193a4971c4d8b6b5f24a42730f, type: 2}
+    amount: 5
+  priceItems:
+  - item: {fileID: 11400000, guid: 2a745d9e265f2e14691a9fb1f339d525, type: 2}
+    amount: 1
 --- !u!1001 &1376896593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144506,9 +144583,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4454723264768702415, guid: e4af86f423597b0469a708feedf9551b, type: 3}
   m_PrefabInstance: {fileID: 7343860}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2076475545 stripped
+--- !u!114 &2076475550 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2076475545, guid: e4af86f423597b0469a708feedf9551b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2076475550, guid: e4af86f423597b0469a708feedf9551b, type: 3}
   m_PrefabInstance: {fileID: 7343860}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076475544}

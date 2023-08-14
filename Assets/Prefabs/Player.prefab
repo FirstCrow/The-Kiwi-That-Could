@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 4454723264768702403}
   - component: {fileID: 39992806158063501}
   - component: {fileID: 1418318432}
-  - component: {fileID: 2076475545}
+  - component: {fileID: 2076475550}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -230,7 +230,7 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
---- !u!114 &2076475545
+--- !u!114 &2076475550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

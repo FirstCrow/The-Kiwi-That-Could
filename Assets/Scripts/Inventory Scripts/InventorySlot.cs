@@ -66,6 +66,7 @@ public class InventorySlot
     public void RemoveFromStack(int amount)
     {
         stackSize -= amount;
+        Debug.Log("Removed: " + amount);
         if (stackSize == 0)
             ClearSlot();
     }

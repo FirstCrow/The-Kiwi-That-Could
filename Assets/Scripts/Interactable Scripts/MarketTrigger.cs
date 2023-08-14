@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MarketTrigger : DialogueTrigger
 {
+    public Canvas shopUI;
     void Update()
     {
         if(!canInteract)
@@ -20,7 +21,12 @@ public class MarketTrigger : DialogueTrigger
 
     private void OpenShop()
     {
-        
+        shopUI.gameObject.SetActive(true);
+    }
+
+    private void CloseShop()
+    {
+        shopUI.gameObject.SetActive(false);
     }
 
 
